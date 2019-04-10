@@ -1,0 +1,59 @@
+.App header {
+  background: #f2f2f2;
+  border-bottom: 1px solid #ccc;
+  z-index: 2;
+}
+
+.App header,
+.App .dqpl-main-content {
+  width: 100%;
+  min-width: 1024px;
+}
+
+.App .dqpl-layout {
+  overflow-x: auto;
+}
+
+.App header h1 {
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+.App .dqpl-field-wrap {
+  margin-bottom: 0;
+}
+
+.App .dqpl-content {
+  max-height: calc(100vh - 300px);
+}
+
+.Stats {
+  border-bottom: 1px solid #ccc;
+}
+
+.Stats .confined {
+  display: flex;
+  justify-content: center;
+}
+
+.App .dqpl-layout .dqpl-main-content:focus {
+  border-left-color: transparent;
+}
+
+.App .dqpl-layout .dqpl-main-content::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  background-color: transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+}
+
+.App .dqpl-layout .dqpl-main-content:focus::before {
+  border-left: 6px solid #fdfdfe;
+  border-right: 6px solid #fdfdfe;
+  background-color: #283640;
+}

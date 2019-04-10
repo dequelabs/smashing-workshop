@@ -29,6 +29,8 @@
     ]
   },
   "dependencies": {
+    "cauldron-react": "0.5.1",
+    "deque-pattern-library": "^4.2.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
   },
