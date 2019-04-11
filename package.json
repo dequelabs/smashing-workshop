@@ -6,6 +6,7 @@
   "author": "Harris Schneiderman <harris.schneiderman@deque.com>",
   "license": "UNLICENSED",
   "scripts": {
+    "build": "parcel build src/index.html",
     "start": "parcel src/index.html",
     "test": "jest"
   },
