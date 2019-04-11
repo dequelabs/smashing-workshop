@@ -1,11 +1,10 @@
 import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'cauldron-react';
-import RecipeModal from '../RecipeModal';
-import { updateRecipe } from '../../data';
+import RecipeModal from '../../containers/RecipeModal';
 import './index.css';
 
-const Recipes = ({ recipes, refresh, ...other }) => {
+const Recipes = ({ recipes, updateRecipe }) => {
   const [modalState, setModalState] = useState({
     edit: null,
     view: null
@@ -53,23 +52,15 @@ const Recipes = ({ recipes, refresh, ...other }) => {
           <RecipeModal
             edit
             show={modalState.edit === recipe.name}
-            updateRecipe={data => {
-              updateRecipe(index, data);
-              refresh();
-            }}
-            recipe={recipe}
+            updateRecipe={data => updateRecipe(index, data)}
             onClose={() => setModalState({ edit: null })}
-            {...other}
+            recipe={recipe}
           />
           <RecipeModal
             show={modalState.view === recipe.name}
-            updateRecipe={data => {
-              updateRecipe(index, data);
-              refresh();
-            }}
-            recipe={recipe}
+            updateRecipe={data => updateRecipe(index, data)}
             onClose={() => setModalState({ view: null })}
-            {...other}
+            recipe={recipe}
           />
         </Fragment>
       ))}
@@ -80,6 +71,6 @@ const Recipes = ({ recipes, refresh, ...other }) => {
 Recipes.displayName = 'Recipes';
 Recipes.propTypes = {
   recipes: PropTypes.array.isRequired,
-  refresh: PropTypes.func.isRequired
+  updateRecipe: PropTypes.func.isRequired
 };
 export default Recipes;

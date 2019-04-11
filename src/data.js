@@ -1,11 +1,7 @@
 import cake from './img/food/cake.png';
 import burger from './img/food/burger.png';
 import grilledCheese from './img/food/grilled_cheese.png';
-// import egg from '../img/icons/egg.svg';
-// import fire from '../img/icons/fire.svg';
-// import recipe from '../img/icons/recipe.svg';
 
-export const STORAGE_KEY = 'smashing-recipes';
 // default data (the initial state of the fake database of recipes)
 const data = [
   {
@@ -91,30 +87,4 @@ const data = [
   }
 ];
 
-/**
- * Gets the recipe data, prioritizing localStorage over static data
- */
-export const getData = () => {
-  const storageData = localStorage.getItem(STORAGE_KEY);
-  return storageData ? JSON.parse(storageData) : data;
-};
-
-/**
- * Updates the recipe data (based on edits made in the app)
- */
-export const setData = updated => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-};
-
-/**
- * Adds updates to a specific recipe and persists it via setData
- */
-export const updateRecipe = (index, updates) => {
-  const data = getData();
-  data[index] = {
-    ...data[index],
-    ...updates
-  };
-
-  setData(data);
-};
+export default data;

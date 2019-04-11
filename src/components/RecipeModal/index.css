@@ -1,4 +1,4 @@
-.RecipeModal .dqpl-content::before {
+.RecipeModal .RecipeModal__inner::before {
   content: '';
   position: absolute;
   left: 9px;
@@ -8,11 +8,11 @@
   width: 6px;
 }
 
-.RecipeModal .dqpl-content:focus {
+.RecipeModal .RecipeModal__inner:focus {
   outline: 0;
 }
 
-.RecipeModal .dqpl-content:focus::before {
+.RecipeModal .RecipeModal__inner:focus::before {
   background-color: #283640;
 }
 

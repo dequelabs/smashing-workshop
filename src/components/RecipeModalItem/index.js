@@ -5,14 +5,14 @@ import './index.css';
 
 const RecipeModalItem = ({ edit, data, index, type, onDelete, ...other }) => {
   const Wrapper = edit ? 'div' : 'li';
-  const text = type === 'instruction' ? 'Instruction' : 'Ingredient';
+  const text = type === 'instructions' ? 'Instruction' : 'Ingredient';
   return (
     <Wrapper className="RecipeModalItem">
       {edit ? (
         <Fragment>
           <TextField
             required
-            multiline={type === 'instruction'}
+            multiline={type === 'instructions'}
             label={`${text} ${index + 1}`}
             defaultValue={data}
             {...other}

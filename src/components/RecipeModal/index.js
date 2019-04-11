@@ -11,178 +11,54 @@ import {
 import RecipeModalItem from '../RecipeModalItem';
 import './index.css';
 
-const defaultErrors = {
-  ingredients: [],
-  instructions: [],
-  yumminess: false
-};
-
 export default class RecipeModal extends Component {
   static propTypes = {
     show: PropTypes.bool.isRequired,
     recipe: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
-    updateRecipe: PropTypes.func,
+    onDelete: PropTypes.func.isRequired,
+    onGreaseChange: PropTypes.func.isRequired,
+    validate: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    setItemRef: PropTypes.func.isRequired,
+    setWrapperRef: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
     edit: PropTypes.bool
   };
-  static defaultProps = {
-    edit: false,
-    updateRecipe: () => {}
-  };
 
-  constructor(props) {
-    super(props);
-    const { recipe } = this.props;
-    this.state = {
-      errors: defaultErrors,
-      greaseChecked: recipe.causedGreaseFire,
-      ingredients: recipe.ingredients,
-      instructions: recipe.instructions
-    };
-  }
-
-  saveRecipe = () => {
-    const erroneousInputs = [...this.ingredients, ...this.instructions].filter(
-      input => input && !input.value.trim()
-    );
-
-    if (!erroneousInputs.length) {
-      const updated = {
-        ingredients: this.ingredients.map(ing => ing.value),
-        instructions: this.instructions.map(inst => inst.value)
-      };
-      this.setState({
-        errors: defaultErrors,
-        ...updated
-      });
-      this.props.updateRecipe(updated);
-      return this.props.onClose();
-    }
-
-    const errors = erroneousInputs.reduce(
-      (acc, val) => {
-        const ingredientIndex = this.ingredients.indexOf(val);
-        if (ingredientIndex > -1) {
-          acc.ingredients.push(ingredientIndex);
-        } else {
-          acc.instructions.push(this.instructions.indexOf(val));
-        }
-
-        return acc;
-      },
-      {
-        ingredients: [],
-        instructions: []
-      }
-    );
-
-    this.setState({ errors }, () => {
-      erroneousInputs[0].focus();
-    });
-  };
-
-  validateYumminess = () => {
-    const value = this.yumminess && this.yumminess.value.trim();
-    const number = value && Number(value);
-    const isErroneous = !value || isNaN(number) || number > 50 || number < 0;
-
-    if (!isErroneous) {
-      this.setState({ errors: defaultErrors });
-      this.props.updateRecipe({
-        yumminess: number,
-        causedGreaseFire: this.state.greaseChecked
-      });
-      return this.props.onClose();
-    }
-
-    this.setState(
-      {
-        errors: {
-          ...this.state.errors,
-          yumminess: true
-        }
-      },
-      () => {
-        this.yumminess.focus();
-      }
-    );
-  };
-
-  handleGreaseCheckboxChange = () => {
-    this.setState({
-      greaseChecked: !this.state.greaseChecked
-    });
-  };
-
-  addIngredient = () => {
-    this.setState(
-      {
-        ingredients: this.state.ingredients.concat('')
-      },
-      () => {
-        this.ingredients[this.ingredients.length - 1].focus();
-      }
-    );
-  };
-
-  addInstruction = () => {
-    this.setState(
-      {
-        instructions: this.state.instructions.concat('')
-      },
-      () => {
-        this.instructions[this.instructions.length - 1].focus();
-      }
-    );
-  };
-
-  onDelete = (index, type) => {
-    const key = type === 'ingredient' ? 'ingredients' : 'instructions';
-
-    const items = this.state[key];
-    // remove the specified index from items
-    items.splice(index, 1);
-    this.setState({
-      [key]: items
-    });
+  addIngredient = () => this.props.add('ingredients');
+  addInstruction = () => this.props.add('instructions');
+  renderItems = type => {
+    const { errors, edit, recipe, setItemRef, onDelete } = this.props;
+    return recipe[type].map((value, i) => (
+      <RecipeModalItem
+        key={`${recipe.name}:${value || `empty${i}`}`}
+        error={errors[type].includes(i) ? 'Ingredient must not be empty' : null}
+        edit={edit}
+        index={i}
+        data={value}
+        type={type}
+        fieldRef={input => {
+          setItemRef(type, i, input);
+        }}
+        onDelete={onDelete}
+      />
+    ));
   };
 
   render() {
-    // reset input ref arrays
-    this.ingredients = [];
-    this.instructions = [];
-    const { errors, ingredients, instructions } = this.state;
-    const { show, recipe, onClose, edit } = this.props;
-    const ingredientItems = ingredients.map((ingredient, i) => (
-      <RecipeModalItem
-        key={`${recipe.name}:${ingredient}`}
-        error={
-          errors.ingredients.includes(i) ? 'Ingredient must not be empty' : null
-        }
-        edit={edit}
-        index={i}
-        data={ingredient}
-        type="ingredient"
-        fieldRef={input => (this.ingredients[i] = input)}
-        onDelete={this.onDelete}
-      />
-    ));
-    const instructionItems = instructions.map((instruction, i) => (
-      <RecipeModalItem
-        edit={edit}
-        error={
-          errors.instructions.includes(i)
-            ? 'Instruction must not be empty'
-            : null
-        }
-        key={`${recipe.name}:${instruction}`}
-        index={i}
-        data={instruction}
-        type="instruction"
-        fieldRef={input => (this.instructions[i] = input)}
-        onDelete={this.onDelete}
-      />
-    ));
+    const {
+      errors,
+      show,
+      recipe,
+      edit,
+      onClose,
+      setWrapperRef,
+      onGreaseChange,
+      validate
+    } = this.props;
+    const ingredientItems = this.renderItems('ingredients');
+    const instructionItems = this.renderItems('instructions');
 
     return (
       <Modal
@@ -193,9 +69,16 @@ export default class RecipeModal extends Component {
         onClose={onClose}
         className="RecipeModal"
       >
-        <ModalContent tabIndex={edit ? -1 : 0}>
+        <ModalContent>
           <h3>Ingredients</h3>
-          {edit ? ingredientItems : <ul>{ingredientItems}</ul>}
+          <div
+            tabIndex={-1}
+            ref={el => {
+              setWrapperRef('ingredientsWrapper', el);
+            }}
+          >
+            {edit ? ingredientItems : <ul>{ingredientItems}</ul>}
+          </div>
           {edit && (
             <div className="RecipeModal__add-another">
               <button
@@ -208,7 +91,14 @@ export default class RecipeModal extends Component {
             </div>
           )}
           <h3>Instructions</h3>
-          {edit ? instructionItems : <ol>{instructionItems}</ol>}
+          <div
+            tabIndex={-1}
+            ref={el => {
+              setWrapperRef('instructionsWrapper', el);
+            }}
+          >
+            {edit ? instructionItems : <ol>{instructionItems}</ol>}
+          </div>
           {edit ? (
             <div className="RecipeModal__add-another">
               <button
@@ -232,7 +122,9 @@ export default class RecipeModal extends Component {
                 type="number"
                 min="0"
                 max="50"
-                fieldRef={el => (this.yumminess = el)}
+                fieldRef={el => {
+                  setWrapperRef('yumminess', el);
+                }}
               />
               <Checkbox
                 checked={recipe.causedGreaseFire}
@@ -240,23 +132,13 @@ export default class RecipeModal extends Component {
                 id="grease-fire"
                 name="grease-fire"
                 label="I caused a grease fire making this"
-                onChange={this.handleGreaseCheckboxChange}
+                onChange={onGreaseChange}
               />
             </div>
           )}
         </ModalContent>
         <ModalFooter>
-          <Button
-            onClick={() => {
-              if (!edit) {
-                return this.validateYumminess();
-              }
-
-              this.saveRecipe();
-            }}
-          >
-            {edit ? 'Save' : 'I cooked it'}
-          </Button>
+          <Button onClick={validate}>{edit ? 'Save' : 'I cooked it'}</Button>
           <Button secondary onClick={onClose}>
             {edit ? 'Cancel' : 'Close'}
           </Button>
