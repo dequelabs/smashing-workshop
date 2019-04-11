@@ -69,80 +69,94 @@ export default class RecipeModal extends Component {
         onClose={onClose}
         className="RecipeModal"
       >
-        <ModalContent>
-          <h3>Ingredients</h3>
-          <div
-            tabIndex={-1}
-            ref={el => {
-              setWrapperRef('ingredientsWrapper', el);
-            }}
-          >
-            {edit ? ingredientItems : <ul>{ingredientItems}</ul>}
-          </div>
-          {edit && (
-            <div className="RecipeModal__add-another">
-              <button
-                type="button"
-                className="dqpl-link"
-                onClick={this.addIngredient}
-              >
-                + Add another ingredient
-              </button>
+        <form onSubmit={validate}>
+          <ModalContent>
+            <h3 id="ingredients-heading">Ingredients</h3>
+            <div
+              className="RecipeModal__group"
+              tabIndex={-1}
+              ref={el => {
+                setWrapperRef('ingredientsWrapper', el);
+              }}
+              aria-labelledby="ingredients-heading"
+            >
+              {edit ? ingredientItems : <ul>{ingredientItems}</ul>}
             </div>
-          )}
-          <h3>Instructions</h3>
-          <div
-            tabIndex={-1}
-            ref={el => {
-              setWrapperRef('instructionsWrapper', el);
-            }}
-          >
-            {edit ? instructionItems : <ol>{instructionItems}</ol>}
-          </div>
-          {edit ? (
-            <div className="RecipeModal__add-another">
-              <button
-                type="button"
-                className="dqpl-link"
-                onClick={this.addInstruction}
-              >
-                + Add another instruction
-              </button>
+            {edit && (
+              <div className="RecipeModal__add-another">
+                <button
+                  type="button"
+                  className="dqpl-link"
+                  onClick={this.addIngredient}
+                >
+                  + Add another ingredient
+                </button>
+              </div>
+            )}
+            <h3 id="instructions-heading">Instructions</h3>
+            <div
+              className="RecipeModal__group"
+              tabIndex={-1}
+              ref={el => {
+                setWrapperRef('instructionsWrapper', el);
+              }}
+              aria-labelledby="instructions-heading"
+            >
+              {edit ? instructionItems : <ol>{instructionItems}</ol>}
             </div>
-          ) : (
-            <div className="RecipeModal__global">
-              <TextField
-                label="Rate the yumminess (0 - 50)"
-                defaultValue={`${recipe.yumminess}`}
-                error={
-                  errors.yumminess
-                    ? 'Yumminess must be a number between 0 and 50'
-                    : null
-                }
-                type="number"
-                min="0"
-                max="50"
-                fieldRef={el => {
-                  setWrapperRef('yumminess', el);
-                }}
-              />
-              <Checkbox
-                checked={recipe.causedGreaseFire}
-                value="true"
-                id="grease-fire"
-                name="grease-fire"
-                label="I caused a grease fire making this"
-                onChange={onGreaseChange}
-              />
-            </div>
-          )}
-        </ModalContent>
-        <ModalFooter>
-          <Button onClick={validate}>{edit ? 'Save' : 'I cooked it'}</Button>
-          <Button secondary onClick={onClose}>
-            {edit ? 'Cancel' : 'Close'}
-          </Button>
-        </ModalFooter>
+            {edit ? (
+              <div className="RecipeModal__add-another">
+                <button
+                  type="button"
+                  className="dqpl-link"
+                  onClick={this.addInstruction}
+                >
+                  + Add another instruction
+                </button>
+              </div>
+            ) : (
+              <div className="RecipeModal__global">
+                <TextField
+                  label="Rate the yumminess (0 - 50)"
+                  defaultValue={`${recipe.yumminess}`}
+                  error={
+                    errors.yumminess
+                      ? 'Yumminess must be a number between 0 and 50'
+                      : null
+                  }
+                  type="number"
+                  min="0"
+                  max="50"
+                  fieldRef={el => {
+                    setWrapperRef('yumminess', el);
+                  }}
+                />
+                <Checkbox
+                  checked={recipe.causedGreaseFire}
+                  value="true"
+                  id="grease-fire"
+                  name="grease-fire"
+                  label="I caused a grease fire making this"
+                  onChange={onGreaseChange}
+                />
+              </div>
+            )}
+          </ModalContent>
+          <ModalFooter>
+            <Button
+              type="submit"
+              onClick={validate}
+              disabled={
+                !recipe.instructions.length && !recipe.ingredients.length
+              }
+            >
+              {edit ? 'Save' : 'I cooked it'}
+            </Button>
+            <Button secondary onClick={onClose}>
+              {edit ? 'Cancel' : 'Close'}
+            </Button>
+          </ModalFooter>
+        </form>
       </Modal>
     );
   }

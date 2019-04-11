@@ -14,10 +14,10 @@ const App = ({ recipes, stats, updateRecipe }) => (
     <Layout>
       <header>
         <div className="confined">
-          <h1>Recipe Dashboard</h1>
+          <h1 id="main-heading">Recipe Dashboard</h1>
         </div>
       </header>
-      <Main id="main-content" tabIndex={-1}>
+      <Main id="main-content" aria-labelledby="main-heading" tabIndex={-1}>
         <Stats stats={stats} />
         <Recipes recipes={recipes} updateRecipe={updateRecipe} />
       </Main>

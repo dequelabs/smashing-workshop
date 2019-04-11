@@ -2,16 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RecipeModal from '../components/RecipeModal';
 
-const isValidYumminess = input => {
+const invalidYumminess = input => {
   const value = input && input.value.trim();
   const number = value && Number(value);
   return !value || isNaN(number) || number > 50 || number < 0;
 };
-const inputHasValue = input => input && !input.value.trim();
+const invalidRecipe = (input, inputs) => {
+  const isEmpty = input && !input.value.trim();
+  const isDuplicate = inputs.find(
+    otherInput => otherInput !== input && otherInput.value === input.value
+  );
+
+  return isEmpty || isDuplicate;
+};
 const defaultErrors = {
   ingredients: [],
   instructions: [],
-  yumminess: false
+  yumminess: false,
+  insufficient: false
 };
 
 export default class RecipeModalContainer extends Component {
@@ -57,14 +65,15 @@ export default class RecipeModalContainer extends Component {
     onClose();
   };
 
-  validate = () => {
+  validate = e => {
+    e.preventDefault();
     const { edit } = this.props;
     const inputs = edit
       ? [...this.ingredients, ...this.instructions]
-      : [...this.yumminess];
-    const erroneousInputs = inputs.filter(
-      edit ? inputHasValue : isValidYumminess
-    );
+      : [this.yumminess];
+    const erroneousInputs = inputs.filter(input => {
+      return edit ? invalidRecipe(input, inputs) : invalidYumminess(input);
+    });
 
     if (!erroneousInputs.length) {
       return this.submitSuccess();

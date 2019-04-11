@@ -9,6 +9,7 @@
   right: 0;
   color: #666;
   font-size: 1.2em;
+  background-color: transparent;
 }
 
 .dqpl-modal.RecipeModal .dqpl-dialog-inner .dqpl-content h3 {
