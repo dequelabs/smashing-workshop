@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 26px;
+  margin: 26px auto;
   background: #fdfdfe;
+  flex-wrap: wrap;
+  max-width: 1350px;
 }
 
 .Recipes__card {
-  margin: 50px;
+  margin: 25px;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.16);
   width: 277px;
   text-align: center;
@@ -103,4 +105,28 @@
 .Recipes__card-foot button:hover .BracketRight {
   opacity: 1;
   transition: all 500ms;
+}
+
+.Recipes__card dt {
+  color: #666;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.Recipes__card dd {
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.Recipes__card dd.Beginner {
+  color: #009245;
+}
+
+.Recipes__card dd.Intermediate {
+  color: #6f4d0c;
+}
+
+.Recipes__card dd.Advanced {
+  color: #d83251;
 }

@@ -48,7 +48,8 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   top: 0;
-  bottom: 0;
+  /* bottom: 0; */
+  height: 100%;
   width: 18px;
 }
 

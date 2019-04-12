@@ -34,7 +34,7 @@ const Recipes = ({ recipes, updateRecipe }) => {
                 <dt>Cook time</dt>
                 <dd>{recipe.cookTime}</dd>
                 <dt>Difficulty</dt>
-                <dd>{recipe.difficulty}</dd>
+                <dd className={recipe.difficulty}>{recipe.difficulty}</dd>
               </dl>
             </div>
             <div className="Recipes__card-foot">

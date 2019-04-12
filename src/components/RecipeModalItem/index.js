@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { Icon, TextField } from 'cauldron-react';
 import './index.css';
 
+/**
+ * Renders a recipe item (an ingredient or instruction).
+ * Renders a text field if edit is true, otherwise a list item.
+ */
 const RecipeModalItem = ({ edit, data, index, type, onDelete, ...other }) => {
   const Wrapper = edit ? 'div' : 'li';
   const text = type === 'instructions' ? 'Instruction' : 'Ingredient';

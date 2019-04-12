@@ -1,6 +1,11 @@
 import cake from './img/food/cake.png';
 import burger from './img/food/burger.png';
 import grilledCheese from './img/food/grilled_cheese.png';
+import kale from './img/food/kale_salad.png';
+import lemonBar from './img/food/lemon_bar.png';
+import spaget from './img/food/spaget.png';
+import steak from './img/food/steak.png';
+import trailMix from './img/food/trail_mix.png';
 
 // default data (the initial state of the fake database of recipes)
 const data = [
@@ -11,7 +16,7 @@ const data = [
     image: cake,
     prepTime: '20 min',
     cookTime: '30 min',
-    difficulty: 'Intermediate',
+    difficulty: 'Beginner',
     causedGreaseFire: false,
     yumminess: 50,
     ingredients: [
@@ -34,13 +39,68 @@ const data = [
     ]
   },
   {
+    name: "Mom's Spaghetti",
+    date: '1/19/2019',
+    cookCount: 0,
+    image: spaget,
+    prepTime: '10 min',
+    cookTime: '50 min',
+    difficulty: 'Beginner',
+    causedGreaseFire: false,
+    yumminess: 29,
+    ingredients: [
+      '1 pound ground beef',
+      '1 large onion, chopped',
+      '2 garlic cloves, minced',
+      '1(8 - ounce) can tomato sauce',
+      '3 cups tomato juice',
+      '1 cup water',
+      '1 teaspoon salt',
+      '1 teaspoon sugar',
+      '2 to 3 teaspoons chili powder',
+      '1 teaspoon dried oregano',
+      'Dash of pepper',
+      '1(7 - ounce) package spaghetti, uncooked',
+      'Grated Parmesan cheese',
+      'Garnish: fresh Italian parsley sprigs'
+    ],
+    instructions: [
+      'Cook first 3 ingredients in a Dutch oven, stirring until beef crumbles and is no longer pink; drain well. Return beef mixture to pan. Stir in tomato sauce and next 8 ingredients; bring to a boil. Cover, reduce heat, and simmer, stirring often, 30 minutes.',
+      'Add pasta; cover and simmer, stirring often, 20 minutes or until pasta is tender. Serve with cheese, and garnish, if desired.'
+    ]
+  },
+  {
+    name: 'Filet Mignon',
+    date: '2/11/2019',
+    cookCount: 2,
+    image: steak,
+    prepTime: '10 min',
+    cookTime: '50 min',
+    difficulty: 'Intermediate',
+    causedGreaseFire: true,
+    yumminess: 50,
+    ingredients: [
+      '2 tbsp.extra - virgin olive oil',
+      '4(6 - oz.) filet mignon',
+      'Kosher salt',
+      'Freshly ground black pepper',
+      '4 tbsp.butter',
+      '1 tbsp.roughly chopped rosemary'
+    ],
+    instructions: [
+      'Preheat oven to 400°.In a large skillet over medium - high heat, heat oil.Season steak with salt and pepper on both sides.When oil is just about to smoke, add steak.Cook until very seared, about 5 minutes, then flip and add butter and rosemary.Baste with butter and cook another 5 minutes.',
+      'Transfer skillet to oven and cook until cooked to your liking, about 10 minutes for medium.',
+      'Remove from pan and let rest 5 minutes before slicing.'
+    ]
+  },
+  {
     name: 'Mega Burger',
     date: '12/12/2018',
     cookCount: 3,
     image: burger,
     prepTime: '10 min',
     cookTime: '20 min',
-    difficulty: 'Beginner',
+    difficulty: 'Advanced',
     causedGreaseFire: true,
     yumminess: 37,
     ingredients: [
@@ -83,6 +143,89 @@ const data = [
     instructions: [
       'Preheat the griddle to medium heat.',
       'Build the sandwiches with 1 slice of white cheese on 4 pieces of bread and 1 slice of yellow cheese on the other 4 slices of bread. Close the sandwiches and butter both sides. Place on the griddle; cover with a metal bowl and let the sandwiches get a nice golden brown, 2 to 3 minutes. Flip, cover again and cook until the cheese is melted and the sandwiches are golden brown, 2 to 3 minutes.'
+    ]
+  },
+  {
+    name: 'Lemon Squares',
+    date: '3/11/2019',
+    cookCount: 2,
+    image: lemonBar,
+    prepTime: '10 min',
+    cookTime: '45 min',
+    difficulty: 'Beginner',
+    causedGreaseFire: true,
+    yumminess: 50,
+    ingredients: [
+      '1 cup all - purpose flour',
+      '1 / 2 cup butter, softened',
+      "1 / 4 cup confectioners' sugar",
+      '2 large eggs',
+      '1 cup sugar',
+      '2 tablespoons all - purpose flour',
+      '1 / 2 teaspoon baking powder',
+      '2 tablespoons lemon juice',
+      '1 teaspoon grated lemon zest',
+      "Additional confectioners' sugar"
+    ],
+    instructions: [
+      "In a bowl, combine the flour, butter and confectioners' sugar. Pat into an ungreased 8-in. square baking pan. Bake at 350° for 20 minutes.",
+      "For filling, in a small bowl, beat eggs.Add the sugar, flour, baking powder, lemon juice and zest; beat until frothy.Pour over the crust.Bake 25 minutes longer or until light golden brown.Cool on a wire rack.Dust with confectioners' sugar. Cut into bars."
+    ]
+  },
+  {
+    name: 'Kale Salad',
+    date: '3/22/2019',
+    cookCount: 2,
+    image: kale,
+    prepTime: '10 min',
+    cookTime: '0 min',
+    difficulty: 'Intermediate',
+    causedGreaseFire: true,
+    yumminess: 50,
+    ingredients: [
+      '1 large bunch about 10 ounces or 3 - 4 cups kale leaves, finely chopped',
+      '1 pint cherry or grape tomatoes halved',
+      '1 cucumber seeded and diced',
+      '1 / 2 red onion thinly sliced',
+      '1 / 2 cup crumbled feta cheese',
+      '1 / 2 cup extra virgin olive oil',
+      '1 / 4 cup lemon juice',
+      '1 garlic clove minced',
+      '1 teaspoon dried oregano',
+      'Salt and pepper to taste'
+    ],
+    instructions: [
+      'To make the dressing:In a small to medium mixing bowl, combine olive oil, lemon juice, garlic, oregano, salt, and pepper. Whisk until combined.',
+      'To make the salad: Combine all the chopped ingredients in a large bowl, pour dressing over salad and mix.Sprinkle with extra feta cheese before serving.',
+      'Prepared and dressed salad can be stored in the fridge for up to 48 hours.'
+    ]
+  },
+  {
+    name: 'Trail Mix',
+    date: '3/22/2019',
+    cookCount: 0,
+    image: trailMix,
+    prepTime: '10 min',
+    cookTime: '0 min',
+    difficulty: 'Intermediate',
+    causedGreaseFire: true,
+    yumminess: 50,
+    ingredients: [
+      '1 cup raw almonds (I use raw activated almonds)',
+      '3 / 4 cup raw cashews',
+      '5 raw brazil nuts, rough chopped',
+      '2 / 3 cup raw pumpkin seeds',
+      '1 / 3 cup raw sunflower seeds',
+      '2 / 3 cup air popped popcorn(no oil or salt added)',
+      '2 tablespoons unsweetened dried cranberries, chopped',
+      '2 tablespoons vegan dark chocolate chips',
+      'sea salt'
+    ],
+    instructions: [
+      'Chop any large ingredients if necessary to make everything about the same size.',
+      'Give the dried fruit a light sprinkle of sea salt before you mix it in (it sticks better), or sprinkle the whole mix with salt if you prefer.',
+      'Combine all ingredients in a bowl and enjoy!',
+      'Store in an airtight container for up to 2 weeks.'
     ]
   }
 ];
