@@ -17,5 +17,19 @@
     "react": {
       "version": "16"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": "**/*.test.js",
+      "globals": {
+        "jest": true,
+        "test": true,
+        "expect": true,
+        "afterEach": true,
+        "afterAll": true,
+        "beforeEach": true,
+        "beforeAll": true
+      }
+    }
+  ]
 }

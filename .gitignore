@@ -4,4 +4,3 @@ dist
 yarn-error.log
 todo.md
 .vscode
-package-lock.json
