@@ -7,7 +7,7 @@ const Stats = ({ stats }) => (
     <div className="confined">
       {stats.map(({ label, value, icon }) => (
         <div className="Stat" key={`${label}-${value}`}>
-          <h2 aria-live="polite" aria-atomic="true" aria-relevant="text">
+          <h2 aria-live="polite" aria-relevant="all" aria-atomic="true">
             <div className="Stat__value">
               {icon && (
                 <img
