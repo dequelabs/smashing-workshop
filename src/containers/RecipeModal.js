@@ -47,7 +47,7 @@ export default class RecipeModalContainer extends Component {
   }
 
   submitSuccess = () => {
-    const { edit, updateRecipe, onClose } = this.props;
+    const { edit, updateRecipe, onClose, recipe } = this.props;
     const resetErrors = { errors: defaultErrors };
     const recipeUpdates = edit
       ? {
@@ -56,7 +56,8 @@ export default class RecipeModalContainer extends Component {
         }
       : {
           yumminess: Number(this.yumminess.value.trim()),
-          causedGreaseFire: this.state.greaseChecked
+          causedGreaseFire: this.state.greaseChecked,
+          cookCount: recipe.cookCount + 1
         };
     const newState = edit ? { ...resetErrors, ...recipeUpdates } : resetErrors;
 

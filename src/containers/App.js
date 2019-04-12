@@ -25,6 +25,7 @@ export default class AppContainer extends Component {
     const storageData = localStorage.getItem(STORAGE_KEY);
     return storageData ? JSON.parse(storageData) : data;
   };
+
   /**
    * Generates an array of recipe stats
    *
@@ -33,6 +34,9 @@ export default class AppContainer extends Component {
    */
   getStats = recipes => {
     const recipeCount = recipes.length;
+    const recipesMade = recipes.reduce((count, recipe) => {
+      return count + recipe.cookCount;
+    }, 0);
     const averageYumminess =
       recipes.reduce((acc, recipe) => {
         return acc + recipe.yumminess;
@@ -68,7 +72,7 @@ export default class AppContainer extends Component {
       },
       {
         label: 'Recipes made',
-        value: recipeCount,
+        value: recipesMade,
         icon: recipe
       },
       {
