@@ -120,7 +120,7 @@ I know what you're thinking - that sounds like a ton of work! Don't worry, the c
 #### Example `<TextField />` with `error` prop:
 
 ```jsx
-<TextField required label={`Foo`} error="Foo is required!" />
+<TextField required label="Foo" error="Foo is required!" />
 ```
 
 We have already set everything up for you to write the validation...
