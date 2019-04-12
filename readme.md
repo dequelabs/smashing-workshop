@@ -45,3 +45,10 @@ with watcher:
 yarn test --watch
 # npm test -- --watch
 ```
+
+# Run end-to-end tests (watches)
+
+```sh
+yarn test:e2e
+# npm run test:e2e
+```

@@ -1,19 +1,10 @@
-import cake from './img/food/cake.png';
-import burger from './img/food/burger.png';
-import grilledCheese from './img/food/grilled_cheese.png';
-import kale from './img/food/kale_salad.png';
-import lemonBar from './img/food/lemon_bar.png';
-import spaget from './img/food/spaget.png';
-import steak from './img/food/steak.png';
-import trailMix from './img/food/trail_mix.png';
-
 // default data (the initial state of the fake database of recipes)
 const data = [
   {
     name: 'Chocolate Cake',
     date: '11/17/2018',
     cookCount: 1,
-    image: cake,
+    image: '/food/cake.png',
     prepTime: '20 min',
     cookTime: '30 min',
     difficulty: 'Beginner',
@@ -42,7 +33,7 @@ const data = [
     name: "Mom's Spaghetti",
     date: '1/19/2019',
     cookCount: 0,
-    image: spaget,
+    image: '/food/spaget.png',
     prepTime: '10 min',
     cookTime: '50 min',
     difficulty: 'Beginner',
@@ -73,7 +64,7 @@ const data = [
     name: 'Filet Mignon',
     date: '2/11/2019',
     cookCount: 2,
-    image: steak,
+    image: '/food/steak.png',
     prepTime: '10 min',
     cookTime: '50 min',
     difficulty: 'Intermediate',
@@ -97,7 +88,7 @@ const data = [
     name: 'Mega Burger',
     date: '12/12/2018',
     cookCount: 3,
-    image: burger,
+    image: '/food/burger.png',
     prepTime: '10 min',
     cookTime: '20 min',
     difficulty: 'Advanced',
@@ -128,7 +119,7 @@ const data = [
     name: 'Grilled Cheese',
     date: '04/09/2019',
     cookCount: 0,
-    image: grilledCheese,
+    image: '/food/grilled_cheese.png',
     prepTime: '2 min',
     cookTime: '8 min',
     difficulty: 'Beginner',
@@ -149,7 +140,7 @@ const data = [
     name: 'Lemon Squares',
     date: '3/11/2019',
     cookCount: 2,
-    image: lemonBar,
+    image: '/food/lemon_bar.png',
     prepTime: '10 min',
     cookTime: '45 min',
     difficulty: 'Beginner',
@@ -176,7 +167,7 @@ const data = [
     name: 'Kale Salad',
     date: '3/22/2019',
     cookCount: 2,
-    image: kale,
+    image: '/food/kale_salad.png',
     prepTime: '10 min',
     cookTime: '0 min',
     difficulty: 'Intermediate',
@@ -204,7 +195,7 @@ const data = [
     name: 'Trail Mix',
     date: '3/22/2019',
     cookCount: 0,
-    image: trailMix,
+    image: '/food/trail_mix.png',
     prepTime: '10 min',
     cookTime: '0 min',
     difficulty: 'Intermediate',

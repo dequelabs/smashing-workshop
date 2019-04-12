@@ -8,6 +8,11 @@
   "scripts": {
     "build": "parcel build src/index.html",
     "start": "parcel src/index.html",
+    "cy:open": "cypress open",
+    "cy:wait": "wait-on http://localhost:1234",
+    "test:e2e:serve": "npm start",
+    "test:e2e:cy": "run-s cy:wait cy:open",
+    "test:e2e": "run-p test:e2e:*",
     "test": "jest"
   },
   "prettier": {
@@ -43,28 +48,38 @@
       }
     }
   },
+  "staticFiles": {
+    "staticPath": "src/img"
+  },
   "dependencies": {
-    "cauldron-react": "0.5.1",
+    "cauldron-react": "^0.5.1",
     "deque-pattern-library": "^4.2.1",
-    "react": "^16.8.5",
+    "react": "^16.8.6",
     "react-dom": "^16.8.5"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
+    "axe-core": "^3.2.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cypress": "^3.2.0",
+    "cypress-axe": "^0.4.0",
     "eslint": "^5.15.3",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-cypress": "^2.2.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "husky": "^1.3.1",
     "jest": "^24.5.0",
     "lint-staged": "^8.1.5",
+    "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.0.0",
     "prettier": "^1.16.4",
-    "react-axe": "^3.1.0"
+    "react-axe": "^3.1.0",
+    "wait-on": "^3.2.0"
   }
 }
