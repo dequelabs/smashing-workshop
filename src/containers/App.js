@@ -78,7 +78,8 @@ export default class AppContainer extends Component {
       },
       {
         label: 'Yumminess',
-        value: `${averageYumminess.toFixed(2)}`
+        value: `${averageYumminess.toFixed(2)}`,
+        histogram: true
       }
     ];
   };

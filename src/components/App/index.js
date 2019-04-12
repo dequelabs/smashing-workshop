@@ -8,16 +8,16 @@ import './index.css';
 const App = ({ recipes, stats, updateRecipe }) => (
   <div className="App">
     <SkipLink target={'#main-content'} />
-    <TopBar>
+    <TopBar role="banner">
       <MenuItem>awesome recipes</MenuItem>
     </TopBar>
     <Layout>
-      <header>
-        <div className="confined">
-          <h1 id="main-heading">Recipe Dashboard</h1>
-        </div>
-      </header>
       <Main id="main-content" aria-labelledby="main-heading" tabIndex={-1}>
+        <div className="App__head">
+          <div className="confined">
+            <h1 id="main-heading">Recipe Dashboard</h1>
+          </div>
+        </div>
         <Stats stats={stats} />
         <Recipes recipes={recipes} updateRecipe={updateRecipe} />
       </Main>

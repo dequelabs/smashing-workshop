@@ -1,10 +1,10 @@
-.App header {
+.App .App__head {
   background: #f2f2f2;
   border-bottom: 1px solid #ccc;
   z-index: 2;
 }
 
-.App header,
+.App .App__head,
 .App .dqpl-main-content {
   width: 100%;
   min-width: 1024px;
@@ -14,7 +14,7 @@
   overflow-x: auto;
 }
 
-.App header h1 {
+.App .App__head h1 {
   text-transform: uppercase;
   margin-left: 10px;
 }
@@ -36,20 +36,19 @@
   justify-content: center;
 }
 
-.App .dqpl-layout .dqpl-main-content:focus {
-  border-left-color: transparent;
+.App .dqpl-layout .dqpl-main-content {
+  border: none;
 }
 
 .App .dqpl-layout .dqpl-main-content::before {
   content: '';
   position: absolute;
-  left: 9px;
   background-color: transparent;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  top: 0;
-  /* bottom: 0; */
-  height: 100%;
+  top: 70px;
+  left: 9px;
+  bottom: 0;
   width: 18px;
 }
 
