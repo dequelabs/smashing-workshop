@@ -128,9 +128,29 @@ We have already set everything up for you to write the validation...
 
 **Update the `validate` method of the `RecipeModal` container (`src/containers/RecipeModal.js`).**
 
-# Run end-to-end tests (watches)
+## Exercise 3 (bonus): end-to-end tests
+
+> End-to-end testing helps ensure that the integrated components of an app function as expected
+
+Run the e2e tests:
 
 ```sh
 yarn test:e2e
 # npm run test:e2e
 ```
+
+Oops! Looks like we have an accessibilty issue when the modal is opened.
+
+### Couldn't we catch this in unit tests?
+
+We _could_ but unit tests usually only test components in isolation...
+
+> Given state a, the component should do x, y, and z
+
+We could've put some thought into the structure of the app and mount our `<RecipeModal />` into the full context. The problem there is that it can quickly become a maintenance nightmare as soon as you restructure your app. This is why end to end tests are great for this kind of thing. We will test our app in the "real world" and write the tests without having to be concerned with how the individual components are structured.
+
+**The issue**: ARIA hidden element must not contain focusable elements [learn more](https://dequeuniversity.com/rules/axe/3.2/aria-hidden-focus?application=coconut)
+
+**The fix**: To ensure that there are no _naturally_ focusable elements behind the modal, we need to temporarily set `tabIndex` to `-1` on all focusable elements outside of the modal. We also want to revert the `tabIndex` back to `0` when the modal closes.
+
+**Go ahead and fix this a11y issue!**
