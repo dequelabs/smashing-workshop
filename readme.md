@@ -114,6 +114,7 @@ We should not allow the user to submit the edit recipe form with empty text fiel
 - a descriptive error should be added in close proximity to the erroneous field.
 - each error message should be assigned a unique id
 - each erroneous field should be associated with its error message via `aria-describedby`
+- focus the first erroneous input
 
 I know what you're thinking - that sounds like a ton of work! Don't worry, the cauldron-react `<TextField />` component will handle all of that for us. Our task here is to write validation for the ingredient and instruction text fields and feed our errors into the `<TextField />` component.
 

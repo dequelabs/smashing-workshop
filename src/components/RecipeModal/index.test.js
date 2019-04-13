@@ -32,7 +32,6 @@ test('each text field has a unique accessible label', () => {
 });
 
 test('each delete button has a unique accessible name', () => {
-  // RecipeModal__ingredient-delete
   const modal = mount(<RecipeModal {...defaultProps} />);
   const names = [];
   modal.find('.RecipeModal__ingredient-delete').forEach(button => {
