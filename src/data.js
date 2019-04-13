@@ -117,7 +117,7 @@ const data = [
   },
   {
     name: 'Grilled Cheese',
-    date: '04/09/2019',
+    date: '4/09/2019',
     cookCount: 0,
     image: '/food/grilled_cheese.png',
     prepTime: '2 min',

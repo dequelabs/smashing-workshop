@@ -33,14 +33,28 @@ export default class AppContainer extends Component {
    * @returns {Array} array of object containing: label, value, and icon(optional)
    */
   getStats = recipes => {
-    const recipeCount = recipes.length;
     const recipesMade = recipes.reduce((count, recipe) => {
       return count + recipe.cookCount;
     }, 0);
-    const averageYumminess =
-      recipes.reduce((acc, recipe) => {
-        return acc + recipe.yumminess;
-      }, 0) / recipeCount;
+    const averageYumminess = data => {
+      return (
+        data.reduce((acc, recipe) => {
+          return acc + recipe.yumminess;
+        }, 0) / data.length
+      )
+        .toFixed(1)
+        .replace(/[.,]0$/, '');
+    };
+    const histogram = [11, 12, 1, 2, 3, 4].map(month => {
+      const monthRecipes = recipes.filter(
+        recipe => Number(recipe.date.split('/')[0]) === month
+      );
+      return {
+        month,
+        average: averageYumminess(monthRecipes)
+      };
+    });
+
     const eggCount = recipes.reduce((acc, recipe) => {
       const recipeEggCount = recipe.ingredients.reduce(
         (totalEggs, ingredient) => {
@@ -82,8 +96,8 @@ export default class AppContainer extends Component {
       },
       {
         label: 'Yumminess',
-        value: `${averageYumminess.toFixed(2)}`,
-        histogram: true
+        value: `${averageYumminess(recipes)}`,
+        histogram
       }
     ];
   };

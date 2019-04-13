@@ -21,7 +21,7 @@ const statsStub = [
   {
     label: 'Yumminess',
     value: '45.00',
-    histogram: true
+    histogram: []
   }
 ];
 

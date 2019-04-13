@@ -5,6 +5,20 @@
   text-align: center;
 }
 
+.Stat.with-chart {
+  display: flex;
+  align-items: baseline;
+}
+
+.Stat.with-chart .Stat__label {
+  text-align: left;
+}
+
+.Stat.with-chart h2 {
+  display: flex;
+  margin-top: auto;
+}
+
 .Stat:first-child {
   border-left: none;
 }

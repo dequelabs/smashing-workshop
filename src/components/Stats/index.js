@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Histogram from '../Histogram';
 import './index.css';
 
 const Stats = ({ stats }) => (
   <div className="Stats">
     <div className="confined">
-      {stats.map(({ label, value, icon }) => (
-        <div className="Stat" key={`${label}-${value}`}>
+      {stats.map(({ label, value, icon, histogram }) => (
+        <div
+          className={`Stat ${histogram ? 'with-chart' : ''}`}
+          key={`${label}-${value}`}
+        >
           <h2 aria-live="polite" aria-relevant="all" aria-atomic="true">
             <div className="Stat__value">
               {icon && (
@@ -17,9 +21,21 @@ const Stats = ({ stats }) => (
                   role="presentation"
                 />
               )}
-              <span>{value}</span>
+              {histogram ? (
+                <Histogram data={histogram} />
+              ) : (
+                <span>{value}</span>
+              )}
             </div>
-            <div className="Stat__label">{label}</div>
+            <div>
+              <div className="Stat__label">{label}</div>
+              {histogram && (
+                <div className="Histogram__value-wrap">
+                  <span className="Histogram__value">{value} </span>
+                  <span>avg</span>
+                </div>
+              )}
+            </div>
           </h2>
         </div>
       ))}
