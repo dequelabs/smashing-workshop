@@ -61,3 +61,7 @@
   border-right: 6px solid #fdfdfe;
   background-color: #283640;
 }
+
+.App .dqpl-modal .dqpl-dialog-inner .dqpl-modal-header h2 {
+  padding: 10px 24px;
+}

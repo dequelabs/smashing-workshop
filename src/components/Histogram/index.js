@@ -18,7 +18,9 @@ const Histogram = ({ data }) => (
     {data.map(breakdown => (
       <li
         key={breakdown.month}
-        aria-label={`${monthMap[breakdown.month]}: ${breakdown.average}`}
+        aria-label={`${breakdown.average} average in ${
+          monthMap[breakdown.month]
+        }`}
       >
         <div
           style={{

@@ -10,7 +10,11 @@ const invalidYumminess = input => {
 const invalidRecipe = (input, inputs) => {
   const isEmpty = input && !input.value.trim();
   const isDuplicate = inputs.find(
-    otherInput => otherInput !== input && otherInput.value === input.value
+    otherInput =>
+      otherInput &&
+      input &&
+      otherInput !== input &&
+      otherInput.value === input.value
   );
 
   return isEmpty || isDuplicate;
