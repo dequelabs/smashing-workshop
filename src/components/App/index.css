@@ -1,3 +1,7 @@
+.App .dqpl-top-bar img {
+  width: 30px;
+}
+
 .App .App__head {
   background: #f2f2f2;
   border-bottom: 1px solid #ccc;
