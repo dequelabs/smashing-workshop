@@ -2,6 +2,7 @@
 
 ## NOTE: This is the broken branch. It intentionally has a11y issues:
 
+- generic title (page info tool)
 - stats icons have generic/non-descriptive accNames of "decorative icon" (images tool)
 - trash buttons have bad accNames of "trash can icon" (n/r/v tool)
 - edit modal form fields have non-unique labels (forms tool)
