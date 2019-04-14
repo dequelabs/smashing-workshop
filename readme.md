@@ -8,6 +8,7 @@
 
 A basic understanding of the following:
 
+- Git
 - HTML
 - CSS
 - JS
