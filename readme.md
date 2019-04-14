@@ -80,7 +80,7 @@ Given the requirement that any edits to a recipe should be immediately reflected
 
 For this, we will utilize aria live regions. Using `aria-live="polite"` allows us to ensure the updates don't interrupt other important read outs. In addition, `aria-relevant="all"` tells AT to inform the user of **any** change. Lastly, `aria-atomic="true"` tells AT to read the entire content of the changed element which means the user will be informed _"5 eggs used"_ rather than just _"5"_.
 
-**Go ahead and implement the stats as live regions!**
+**Go ahead and implement the stats as live regions! `src/components/Stats`**
 
 ## Exercise 2: <RecipeModal /> (`src/components/RecipeModal` and `src/containers/RecipeModal`)
 
@@ -102,7 +102,7 @@ Per the designs, we should increment a user-friendly number for each text field 
 
 Each delete button should have a **unique** accessible name. The reason we can't just settle for slapping `aria-label="Remove"` on each button is that the user should be provided context that is otherwise conveyed through visual proximity. The ideal accessible name for our delete buttons is `aria-label="Remove {name of field}"`. Referring back to the designs, we have a requirement to increment the accessible name of each button, so we should be left with `aria-label="Remove ingredient 1"`, `aria-label="Remove ingredient 2"`, and so on...
 
-**Go ahead and add a unique accessible name to each delete button (via `aria-label`)!**
+**Go ahead and add a unique accessible name to each delete button (via `aria-label`) `src/components/RecipeModalItem`!**
 
 ### 2c. Form validation
 
@@ -126,7 +126,7 @@ I know what you're thinking - that sounds like a ton of work! Don't worry, the c
 
 We have already set everything up for you to write the validation...
 
-**Update the `validate` method of the `RecipeModal` container (`src/containers/RecipeModal.js`).**
+**Update the `validateEditModal` method of the `RecipeModal` container (`src/containers/RecipeModal.js`).**
 
 ## Exercise 3 (bonus): end-to-end tests
 
