@@ -58,7 +58,7 @@ export default class AppContainer extends Component {
     const eggCount = recipes.reduce((acc, recipe) => {
       const recipeEggCount = recipe.ingredients.reduce(
         (totalEggs, ingredient) => {
-          const match = ingredient.match(/(\d+)\s+egg/);
+          const match = ingredient.match(/(\d+).*egg/);
           if (match && match[1]) {
             return totalEggs + Number(match[1]);
           }
