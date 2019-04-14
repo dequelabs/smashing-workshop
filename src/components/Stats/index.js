@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Histogram from '../Histogram';
 import './index.css';
 
+/* eslint-disable jsx-a11y/alt-text */
 const Stats = ({ stats }) => (
   <div className="Stats">
     <div className="confined">
@@ -11,16 +12,9 @@ const Stats = ({ stats }) => (
           className={`Stat ${histogram ? 'with-chart' : ''}`}
           key={`${label}-${value}`}
         >
-          <h2 aria-live="polite" aria-relevant="all" aria-atomic="true">
+          <h2>
             <div className="Stat__value">
-              {icon && (
-                <img
-                  className="Stat__value-icon"
-                  src={icon}
-                  alt=""
-                  role="presentation"
-                />
-              )}
+              {icon && <img className="Stat__value-icon" src={icon} />}
               {histogram ? (
                 <Histogram data={histogram} />
               ) : (
@@ -42,7 +36,7 @@ const Stats = ({ stats }) => (
     </div>
   </div>
 );
-
+/* eslint-enable jsx-a11y/alt-text */
 Stats.displayName = 'Stats';
 Stats.propTypes = {
   stats: PropTypes.array.isRequired
