@@ -22,7 +22,7 @@ import 'cypress-axe';
 
 const { axe } = JSON.parse(Cypress.env('CONFIG'));
 
-beforeEach(() => {
+before(() => {
   cy.visit('http://localhost:1234');
   // https://github.com/avanslaars/cypress-axe#output
   cy.injectAxe();
