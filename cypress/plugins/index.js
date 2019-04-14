@@ -25,7 +25,8 @@ module.exports = (on, config) => {
       main: 'main,[role="main"]',
       link: 'a[href],[role="link"]',
       image: 'img,[role="img"]',
-      button: 'button[type="button"],[role="button"]'
+      button: 'button[type="button"],[role="button"]',
+      dialog: '[role="dialog"]'
     }
   });
 

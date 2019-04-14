@@ -29,3 +29,59 @@ Cypress.Commands.add('accessibleName', { prevSubject: 'element' }, $subject => {
     return win.axe.commons.text.accessibleText($subject[0]);
   });
 });
+
+// @see https://github.com/cypress-io/cypress/issues/299
+import tabSequence from 'ally.js/query/tabsequence';
+const tab = (el, shiftKey) => {
+  const win = el.ownerDocument.defaultView;
+  const keyboardEvent = new win.KeyboardEvent('keydown', {
+    shiftKey,
+    key: 'Tab',
+    code: 'Tab',
+    keyCode: 9,
+    which: 9
+  });
+  el.dispatchEvent(keyboardEvent);
+};
+
+Cypress.Commands.add(
+  'tab',
+  { prevSubject: 'optional' },
+  ($subject, shiftKey = false) => {
+    const el = $subject ? $subject[0] : cy.state('window').document.body;
+    const doc = el.ownerDocument;
+
+    return Cypress.Promise.try(() => {
+      // fire any JS handler first
+      tab(el, shiftKey);
+      if (doc.activeElement === el) {
+        const tabbable = tabSequence({
+          strategy: 'quick',
+          includeContext: false,
+          includeOnlyTabbable: true,
+          context: doc.documentElement
+        });
+        const currentIndex = tabbable.indexOf(el);
+        const nextIndex = shiftKey ? currentIndex - 1 : currentIndex + 1;
+        cy.now('focus', cy.$$(tabbable[nextIndex % tabbable.length]));
+      }
+    });
+  }
+);
+
+Cypress.Commands.add('trapsFocus', { prevSubject: 'element' }, $subject => {
+  const context = $subject[0];
+  const doc = context.ownerDocument;
+  const tabbable = tabSequence({
+    strategy: 'quick',
+    includeContext: true,
+    includeOnlyTabbable: true,
+    context
+  });
+  tabbable.forEach(el => {
+    tab(el);
+    expect(context.contains(doc.activeElement)).to.be.true;
+    tab(el, true);
+    expect(context.contains(doc.activeElement)).to.be.true;
+  });
+});

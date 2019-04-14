@@ -74,6 +74,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
+    "ally.js": "^1.4.1",
     "autoprefixer": "^9.5.1",
     "axe-core": "^3.2.2",
     "babel-eslint": "^10.0.1",
