@@ -25,7 +25,7 @@ const Recipes = ({
                 onClick={() => {
                   updateModalState({ edit: recipe.name });
                 }}
-                tabIndex={buttonTabIndex}
+                tabIndex={-1}
               >
                 <Icon type="fa-pencil" />
               </div>
