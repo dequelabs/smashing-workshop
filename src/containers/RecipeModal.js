@@ -32,7 +32,7 @@ export default class RecipeModalContainer extends Component {
     const { recipe } = this.props;
     this.state = {
       errors: defaultErrors,
-      greaseChecked: recipe.causedGreaseFire,
+      greaseChecked: false,
       ingredients: recipe.ingredients,
       instructions: recipe.instructions
     };
@@ -48,7 +48,8 @@ export default class RecipeModalContainer extends Component {
         }
       : {
           yumminess: Number(this.yumminess.value.trim()),
-          causedGreaseFire: this.state.greaseChecked,
+          greaseFireCount:
+            recipe.greaseFireCount + (this.state.greaseChecked ? 1 : 0),
           cookCount: recipe.cookCount + 1
         };
     const newState = edit ? { ...resetErrors, ...recipeUpdates } : resetErrors;
@@ -164,7 +165,8 @@ export default class RecipeModalContainer extends Component {
     this.setState({
       ingredients,
       instructions,
-      errors: defaultErrors
+      errors: defaultErrors,
+      greaseChecked: false
     });
     onClose();
   };
