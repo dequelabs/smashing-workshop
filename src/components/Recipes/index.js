@@ -1,14 +1,17 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button } from 'cauldron-react';
 import RecipeModal from '../../containers/RecipeModal';
 import './index.css';
 
-const Recipes = ({ recipes, updateRecipe }) => {
-  const [modalState, setModalState] = useState({
-    edit: null,
-    view: null
-  });
+const Recipes = ({
+  recipes,
+  updateRecipe,
+  updateModalState,
+  modalState: { edit, view }
+}) => {
+  const modalIsShowing = edit || view;
+  const buttonTabIndex = modalIsShowing ? -1 : 0;
   return (
     <div className="Recipes">
       {recipes.map((recipe, index) => (
@@ -19,8 +22,9 @@ const Recipes = ({ recipes, updateRecipe }) => {
                 type="button"
                 aria-label={`Edit ${recipe.name}`}
                 onClick={() => {
-                  setModalState({ edit: recipe.name });
+                  updateModalState({ edit: recipe.name });
                 }}
+                tabIndex={buttonTabIndex}
               >
                 <Icon type="fa-pencil" />
               </button>
@@ -38,7 +42,10 @@ const Recipes = ({ recipes, updateRecipe }) => {
               </dl>
             </div>
             <div className="Recipes__card-foot">
-              <Button onClick={() => setModalState({ view: recipe.name })}>
+              <Button
+                onClick={() => updateModalState({ view: recipe.name })}
+                tabIndex={buttonTabIndex}
+              >
                 <span className="BracketLeft" aria-hidden="true">
                   [
                 </span>
@@ -51,15 +58,15 @@ const Recipes = ({ recipes, updateRecipe }) => {
           </div>
           <RecipeModal
             edit
-            show={modalState.edit === recipe.name}
+            show={edit === recipe.name}
             updateRecipe={data => updateRecipe(index, data)}
-            onClose={() => setModalState({ edit: null })}
+            onClose={() => updateModalState({ edit: null })}
             recipe={recipe}
           />
           <RecipeModal
-            show={modalState.view === recipe.name}
+            show={view === recipe.name}
             updateRecipe={data => updateRecipe(index, data)}
-            onClose={() => setModalState({ view: null })}
+            onClose={() => updateModalState({ view: null })}
             recipe={recipe}
           />
         </Fragment>
@@ -71,6 +78,8 @@ const Recipes = ({ recipes, updateRecipe }) => {
 Recipes.displayName = 'Recipes';
 Recipes.propTypes = {
   recipes: PropTypes.array.isRequired,
-  updateRecipe: PropTypes.func.isRequired
+  updateRecipe: PropTypes.func.isRequired,
+  updateModalState: PropTypes.func.isRequired,
+  modalState: PropTypes.object.isRequired
 };
 export default Recipes;

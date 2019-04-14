@@ -13,7 +13,11 @@ export default class AppContainer extends Component {
     const recipes = this.getData();
     this.state = {
       recipes,
-      stats: this.getStats(recipes)
+      stats: this.getStats(recipes),
+      modal: {
+        edit: null,
+        view: null
+      }
     };
   }
 
@@ -126,10 +130,25 @@ export default class AppContainer extends Component {
     this.setData(recipes);
   };
 
+  updateModalState = data => {
+    this.setState({
+      modal: {
+        ...this.state.modal,
+        ...data
+      }
+    });
+  };
+
   render() {
-    const { recipes, stats } = this.state;
+    const { recipes, stats, modal } = this.state;
     return (
-      <App recipes={recipes} stats={stats} updateRecipe={this.updateRecipe} />
+      <App
+        recipes={recipes}
+        stats={stats}
+        updateRecipe={this.updateRecipe}
+        updateModalState={this.updateModalState}
+        modalState={modal}
+      />
     );
   }
 }
