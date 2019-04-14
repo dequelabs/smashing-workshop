@@ -7,18 +7,6 @@ const invalidYumminess = input => {
   const number = value && Number(value);
   return !value || isNaN(number) || number > 50 || number < 0;
 };
-const invalidRecipe = (input, inputs) => {
-  const isEmpty = input && !input.value.trim();
-  const isDuplicate = inputs.find(
-    otherInput =>
-      otherInput &&
-      input &&
-      otherInput !== input &&
-      otherInput.value === input.value
-  );
-
-  return isEmpty || isDuplicate;
-};
 const defaultErrors = {
   ingredients: [],
   instructions: [],
@@ -70,44 +58,67 @@ export default class RecipeModalContainer extends Component {
     onClose();
   };
 
-  validate = e => {
-    e.preventDefault();
-    const { edit } = this.props;
-    const inputs = edit
-      ? [...this.ingredients, ...this.instructions]
-      : [this.yumminess];
-    const erroneousInputs = inputs.filter(input => {
-      return edit ? invalidRecipe(input, inputs) : invalidYumminess(input);
-    });
+  validateEditModal = () => {
+    /**
+     * TODO: Exercise 2c
+     *
+     * If there are errors, set the error state.
+     * _see `defaultErrors` above for the shape of the error state object_
+     *
+     * Useful information:
+     * - `state.errors.ingredients` and `state.errors.instructions` should
+     *   be set as array of erroneous input indicies (within `this.ingredients`
+     *   and `this.instructions`).
+     * - `this.ingredients` and `this.instructions` are arrays of text field
+     *    element references
+     *
+     * Example:
+     * Let's pretent the first and third ingredient inputs (`this.ingredients[0]`
+     * and `this.ingredients[2]`) are empty and that the second instruction textarea
+     * (`this.instructions[1]`) is empty.
+     *
+     * ```js
+     * this.setState({
+     *   errors: {
+     *     ingredients: [0, 2],
+     *     instructions: [1]
+     *   }
+     * });
+     * // Remember to focus the first erroneous input!
+     * ```
+     * NOTE: If there are no errors, call this.submitSuccess()
+     */
+  };
 
-    if (!erroneousInputs.length) {
+  validateViewModal = () => {
+    const isErroneous = invalidYumminess(this.yumminess);
+
+    if (!isErroneous) {
       return this.submitSuccess();
     }
 
-    const errors = edit
-      ? erroneousInputs.reduce(
-          (acc, val) => {
-            const ingredientIndex = this.ingredients.indexOf(val);
-            if (ingredientIndex > -1) {
-              acc.ingredients.push(ingredientIndex);
-            } else {
-              acc.instructions.push(this.instructions.indexOf(val));
-            }
-            return acc;
-          },
-          {
-            ingredients: [],
-            instructions: []
-          }
-        )
-      : {
+    this.setState(
+      {
+        errors: {
           ...this.state.errors,
           yumminess: true
-        };
+        }
+      },
+      () => {
+        this.yumminess.focus();
+      }
+    );
+  };
 
-    this.setState({ errors }, () => {
-      erroneousInputs[0].focus();
-    });
+  validate = e => {
+    e.preventDefault();
+    const { edit } = this.props;
+
+    if (edit) {
+      return this.validateEditModal();
+    }
+
+    this.validateViewModal();
   };
 
   onGreaseChange = () => {
@@ -159,11 +170,15 @@ export default class RecipeModalContainer extends Component {
   };
 
   setItemRef = (type, index, el) => {
-    this[type][index] = el;
+    if (el) {
+      this[type][index] = el;
+    }
   };
 
   setWrapperRef = (type, el) => {
-    this[type] = el;
+    if (el) {
+      this[type] = el;
+    }
   };
 
   render() {

@@ -17,14 +17,14 @@ const RecipeModalItem = ({ edit, data, index, type, onDelete, ...other }) => {
           <TextField
             required
             multiline={type === 'instructions'}
-            label={`${text} ${index + 1}`}
+            label={`${text}`}
             defaultValue={data}
             {...other}
           />
           <button
             type="button"
             className="RecipeModal__ingredient-delete"
-            aria-label={`Remove ${text} ${index + 1}`}
+            aria-label={`Remove ${text}`}
             onClick={() => onDelete(index, type)}
           >
             <Icon type="fa-trash" />
