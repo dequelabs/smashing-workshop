@@ -1,5 +1,13 @@
 # Smashing 2019 Workshop
 
+## NOTE: This is the broken branch. It intentionally has a11y issues:
+
+- stats icons have generic/non-descriptive accNames of "decorative icon" (images tool)
+- trash buttons have bad accNames of "trash can icon" (n/r/v)
+- edit modal form fields have non-unique labels (forms)
+- yumminess field has no label (forms)
+- yumminess field's error is non-descriptive (forms)
+
 > How To Translate Wireframes Into Accessible HTML/CSS
 
 [smashing conference workshop website](https://smashingconf.com/sf-2019/workshops/deque)

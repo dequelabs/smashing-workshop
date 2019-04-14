@@ -17,8 +17,7 @@ const Stats = ({ stats }) => (
                 <img
                   className="Stat__value-icon"
                   src={icon}
-                  alt=""
-                  role="presentation"
+                  alt="decorative icon"
                 />
               )}
               {histogram ? (
