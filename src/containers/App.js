@@ -72,7 +72,7 @@ export default class AppContainer extends Component {
         0
       );
 
-      return acc + recipeEggCount;
+      return acc + recipeEggCount * recipe.cookCount;
     }, 0);
     const greaseFireCount = recipes.reduce((acc, recipe) => {
       return acc + recipe.greaseFireCount;
