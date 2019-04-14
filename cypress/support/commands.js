@@ -30,6 +30,23 @@ Cypress.Commands.add('accessibleName', { prevSubject: 'element' }, $subject => {
   });
 });
 
+Cypress.Commands.add(
+  'findByAccessibleName',
+  { prevSubject: 'optional' },
+  ($subject, name) => {
+    cy.window({ log: false }).then(win => {
+      const els = $subject
+        ? Array.from($subject)
+        : Array.from(win.document.body.querySelectorAll('*'));
+      win.axe._tree = win.axe.utils.getFlattenedTree(win.document.body);
+      const text = name instanceof RegExp ? name : new RegExp(name, 'im');
+      return els.find(el =>
+        win.axe.commons.text.accessibleText(el).match(text)
+      );
+    });
+  }
+);
+
 // @see https://github.com/cypress-io/cypress/issues/299
 import tabSequence from 'ally.js/query/tabsequence';
 const tab = (el, shiftKey) => {
