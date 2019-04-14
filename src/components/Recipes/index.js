@@ -4,6 +4,8 @@ import { Icon, Button } from 'cauldron-react';
 import RecipeModal from '../../containers/RecipeModal';
 import './index.css';
 
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 const Recipes = ({
   recipes,
   updateRecipe,
@@ -18,8 +20,7 @@ const Recipes = ({
         <Fragment key={recipe.name}>
           <div className="Recipes__card">
             <div className="Recipes__card-head">
-              <button
-                type="button"
+              <div
                 aria-label={`Edit ${recipe.name}`}
                 onClick={() => {
                   updateModalState({ edit: recipe.name });
@@ -27,7 +28,7 @@ const Recipes = ({
                 tabIndex={buttonTabIndex}
               >
                 <Icon type="fa-pencil" />
-              </button>
+              </div>
               <img src={recipe.image} alt="" role="presentation" />
             </div>
             <div className="Recipes__card-content">
@@ -74,7 +75,8 @@ const Recipes = ({
     </div>
   );
 };
-
+/* eslint-enable jsx-a11y/click-events-have-key-events */
+/* eslint-enable jsx-a11y/no-static-element-interactions */
 Recipes.displayName = 'Recipes';
 Recipes.propTypes = {
   recipes: PropTypes.array.isRequired,

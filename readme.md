@@ -5,6 +5,7 @@
 - generic title (page info tool)
 - stats icons have generic/non-descriptive accNames of "decorative icon" (images tool)
 - trash buttons have bad accNames of "trash can icon" (n/r/v tool)
+- all the edit buttons are divs instead of buttons (n/r/v tool)
 - edit modal form fields have non-unique labels (forms tool)
 - yumminess field has no label (forms tool)
 - yumminess field's error is non-descriptive (forms tool)

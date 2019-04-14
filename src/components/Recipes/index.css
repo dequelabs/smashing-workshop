@@ -23,7 +23,8 @@
   width: 100%;
 }
 
-.Recipes__card-head button {
+.Recipes__card-head button,
+.Recipes__card-head > div {
   position: absolute;
   width: 35px;
   height: 35px;
@@ -32,6 +33,13 @@
   top: 10px;
   right: 10px;
   font-size: 1.1em;
+}
+
+.Recipes__card-head > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4d4d4d;
 }
 
 .Recipes__card-content {
