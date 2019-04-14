@@ -8,7 +8,7 @@ const data = [
     prepTime: '20 min',
     cookTime: '30 min',
     difficulty: 'Beginner',
-    causedGreaseFire: false,
+    greaseFireCount: 0,
     yumminess: 50,
     ingredients: [
       '2 cups white sugar',
@@ -37,7 +37,7 @@ const data = [
     prepTime: '10 min',
     cookTime: '50 min',
     difficulty: 'Beginner',
-    causedGreaseFire: false,
+    greaseFireCount: 0,
     yumminess: 29,
     ingredients: [
       '1 pound ground beef',
@@ -68,7 +68,7 @@ const data = [
     prepTime: '10 min',
     cookTime: '50 min',
     difficulty: 'Intermediate',
-    causedGreaseFire: true,
+    greaseFireCount: 2,
     yumminess: 50,
     ingredients: [
       '2 tbsp.extra - virgin olive oil',
@@ -92,7 +92,7 @@ const data = [
     prepTime: '10 min',
     cookTime: '20 min',
     difficulty: 'Advanced',
-    causedGreaseFire: true,
+    greaseFireCount: 1,
     yumminess: 37,
     ingredients: [
       '1 / 2 cup Heinz Tomato Ketchup',
@@ -123,7 +123,7 @@ const data = [
     prepTime: '2 min',
     cookTime: '8 min',
     difficulty: 'Beginner',
-    causedGreaseFire: true,
+    greaseFireCount: 0,
     yumminess: 44,
     ingredients: [
       '4 slices white American cheese',
@@ -144,7 +144,7 @@ const data = [
     prepTime: '10 min',
     cookTime: '45 min',
     difficulty: 'Beginner',
-    causedGreaseFire: true,
+    greaseFireCount: 0,
     yumminess: 50,
     ingredients: [
       '1 cup all - purpose flour',
@@ -171,7 +171,7 @@ const data = [
     prepTime: '10 min',
     cookTime: '0 min',
     difficulty: 'Intermediate',
-    causedGreaseFire: true,
+    greaseFireCount: 0,
     yumminess: 50,
     ingredients: [
       '1 large bunch about 10 ounces or 3 - 4 cups kale leaves, finely chopped',
@@ -199,7 +199,7 @@ const data = [
     prepTime: '10 min',
     cookTime: '0 min',
     difficulty: 'Intermediate',
-    causedGreaseFire: true,
+    greaseFireCount: 0,
     yumminess: 50,
     ingredients: [
       '1 cup raw almonds (I use raw activated almonds)',

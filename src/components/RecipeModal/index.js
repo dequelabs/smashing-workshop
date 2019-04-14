@@ -132,7 +132,6 @@ export default class RecipeModal extends Component {
                   }}
                 />
                 <Checkbox
-                  checked={recipe.causedGreaseFire}
                   value="true"
                   id="grease-fire"
                   name="grease-fire"
