@@ -58,7 +58,7 @@ export default class AppContainer extends Component {
     const eggCount = recipes.reduce((acc, recipe) => {
       const recipeEggCount = recipe.ingredients.reduce(
         (totalEggs, ingredient) => {
-          const match = ingredient.match(/(\d+)\s+egg/);
+          const match = ingredient.match(/(\d+).*egg/);
           if (match && match[1]) {
             return totalEggs + Number(match[1]);
           }
@@ -68,14 +68,10 @@ export default class AppContainer extends Component {
         0
       );
 
-      return acc + recipeEggCount;
+      return acc + recipeEggCount * recipe.cookCount;
     }, 0);
     const greaseFireCount = recipes.reduce((acc, recipe) => {
-      const causedFire = recipe.causedGreaseFire;
-      if (causedFire) {
-        return acc + 1;
-      }
-      return acc;
+      return acc + recipe.greaseFireCount;
     }, 0);
 
     return [
