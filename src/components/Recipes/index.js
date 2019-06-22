@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Button } from 'cauldron-react';
+import { Button } from 'cauldron-react';
 import RecipeModal from '../../containers/RecipeModal';
+import pencil from '../../img/icons/pencil.png';
 import './index.css';
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/alt-text */
 const Recipes = ({
   recipes,
   updateRecipe,
@@ -21,13 +23,13 @@ const Recipes = ({
           <div className="Recipes__card">
             <div className="Recipes__card-head">
               <div
-                aria-label={`Edit ${recipe.name}`}
+                aria-label={`Edit`}
                 onClick={() => {
                   updateModalState({ edit: recipe.name });
                 }}
                 tabIndex={-1}
               >
-                <Icon type="fa-pencil" />
+                <img src={pencil} className="edit" />
               </div>
               <img src={recipe.image} alt="" role="presentation" />
             </div>

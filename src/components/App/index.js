@@ -32,7 +32,9 @@ const App = ({
       <Main id="main-content" aria-labelledby="main-heading" tabIndex={-1}>
         <div className="App__head">
           <div className="confined">
-            <h1 id="main-heading">Recipe Dashboard</h1>
+            <h1 id="main-heading">
+              Recipe Dashboard (with intentional a11y issues)
+            </h1>
           </div>
         </div>
         <Stats stats={stats} />

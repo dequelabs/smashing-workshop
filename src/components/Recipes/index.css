@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.Recipes__card-head img.edit {
+  width: 18px;
+}
+
 .Recipes__card-head button,
 .Recipes__card-head > div {
   position: absolute;
@@ -128,7 +132,8 @@
 }
 
 .Recipes__card dd.Beginner {
-  color: #00853e;
+  /* intentional contrast issue (should be #00853e) */
+  color: #76bf98;
 }
 
 .Recipes__card dd.Intermediate {
