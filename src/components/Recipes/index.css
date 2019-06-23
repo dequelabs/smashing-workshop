@@ -55,6 +55,12 @@
   margin: 10px 0;
 }
 
+.Recipes__card-content .Heading {
+  font-size: 24px;
+  color: #333;
+  font-weight: 400;
+}
+
 .Recipes__card dl {
   display: flex;
   flex-wrap: wrap;

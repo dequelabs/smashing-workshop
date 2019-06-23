@@ -34,7 +34,7 @@ const Recipes = ({
               <img src={recipe.image} alt="" role="presentation" />
             </div>
             <div className="Recipes__card-content">
-              <h3>{recipe.name}</h3>
+              <div className="Heading">{recipe.name}</div>
               <dl>
                 <dt>Prep time</dt>
                 <dd>{recipe.prepTime}</dd>

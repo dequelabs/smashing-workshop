@@ -2,6 +2,10 @@
   width: 30px;
 }
 
+h1 span {
+  text-transform: none;
+}
+
 .App .App__head {
   background: #f2f2f2;
   border-bottom: 1px solid #ccc;

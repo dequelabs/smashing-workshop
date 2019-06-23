@@ -33,7 +33,7 @@ const App = ({
         <div className="App__head">
           <div className="confined">
             <h1 id="main-heading">
-              Recipe Dashboard (with intentional a11y issues)
+              Recipe Dashboard <span>(with intentional a11y issues)</span>
             </h1>
           </div>
         </div>
