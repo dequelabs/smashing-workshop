@@ -1,5 +1,5 @@
 import React from 'react';
-import { TopBar, Main, SkipLink, MenuItem, Layout } from 'cauldron-react';
+import { TopBar, Main, SkipLink, MenuItem, Layout, Icon } from 'cauldron-react';
 import logo from '../../img/icons/logo.svg';
 import './index.css';
 
@@ -19,6 +19,16 @@ const App = () => (
             <h1 id="main-heading">Recipe Dashboard</h1>
           </div>
         </div>
+        <button
+          type="button"
+          className="Edit"
+          aria-label="Edit {recipe}"
+          onClick={() =>
+            alert('TODO: Build the accessible edit recipe modal! Good luck!')
+          }
+        >
+          <Icon type="fa-pencil" />
+        </button>
       </Main>
     </Layout>
   </div>
