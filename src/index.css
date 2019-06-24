@@ -115,3 +115,16 @@ body .dqpl-layout .dqpl-main-content {
   background: #f2f2f2;
   box-shadow: 0 0 1px #000;
 }
+
+.modal {
+  display: none;
+  position: absolute;
+  border: 5px solid #f00;
+  width: 500px;
+  height: 500px;
+  background: #fff;
+}
+
+.modal.open {
+  display: block;
+}

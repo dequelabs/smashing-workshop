@@ -28,6 +28,27 @@
               <span aria-hidden="true" class="fa fa-pencil"></span>
             </button>
           </div>
+          <div class="modal" role="dialog">
+            <h2 tabindex="-1">Recipe name</h2>
+            <button
+              class="modal-close"
+              type="button"
+              aria-label="close"
+              class="fa fa-times"
+            >
+            X
+            </button>
+            <form id="edit-recipe-form">
+              <div class="modal-content">
+                <label for="ingredient-1">Ingredient 1</label>
+                <input type="text" id="ingredient-1" />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="save">Save</button>
+                <button class="cancel">Cancel</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
