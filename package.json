@@ -59,11 +59,13 @@
       "<rootDir>test-utils/setupTests.js"
     ],
     "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>test-utils/styleMock.js"
+      "\\.(css|less)$": "<rootDir>test-utils/styleMock.js",
+      "^.+\\.html$": "<rootDir>test-utils/htmlMock.js"
     }
   },
   "dependencies": {
     "cauldron-react": "^0.5.1",
+    "delegate": "^3.2.0",
     "deque-pattern-library": "^4.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.5"
