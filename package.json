@@ -8,11 +8,6 @@
   "scripts": {
     "build": "parcel build src/index.html",
     "start": "parcel src/index.html --port 1234",
-    "cy:open": "cypress open",
-    "cy:wait": "wait-on http://localhost:1234",
-    "test:e2e:serve": "npm start",
-    "test:e2e:cy": "run-s cy:wait cy:open",
-    "test:e2e": "run-p test:e2e:*",
     "test": "jest"
   },
   "prettier": {
