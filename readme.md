@@ -15,13 +15,13 @@ A basic understanding of the following:
 
 Don't worry if you're lacking any of the above, we will walk you through every step of the process so all you have to do is follow along. Feel free to pair up with another attendee!
 
-## [SmashingConf Toronto](https://smashingconf.com/toronto-2019/workshops) 2019 Branches
+## [SmashingConf Toronto 2019](https://smashingconf.com/toronto-2019/workshops) Branches
 
 - [modal-starter-react](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-react)
 - [modal-starter-vanilla](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-vanilla)
 - [modal-starter-vanilla-solution](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-vanilla-solution)(**incomplete example code**)
 
-## [SmashingConf San Francisco](https://smashingconf.com/sf-2019/workshops/deque) 2019 Branches
+## [SmashingConf San Francisco 2019](https://smashingconf.com/sf-2019/workshops/deque) Branches
 
 - [exercise-1](https://github.com/dequelabs/smashing-workshop/tree/exercise-1)
 - [exercise-2](https://github.com/dequelabs/smashing-workshop/tree/exercise-2)
