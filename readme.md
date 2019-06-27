@@ -15,15 +15,6 @@ A basic understanding of the following:
 
 Don't worry if you're lacking any of the above, we will walk you through every step of the process so all you have to do is follow along. Feel free to pair up with another attendee!
 
-## Setup
-
-### Install dependencies
-
-```sh
-yarn
-# or npm install
-```
-
 ## [SmashingConf Toronto](https://smashingconf.com/toronto-2019/workshops) 2019 Branches
 
 - [modal-starter-react](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-react)
