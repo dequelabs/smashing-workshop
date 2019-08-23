@@ -50,6 +50,27 @@ export default class RecipeModalContainer extends Component {
     };
   }
 
+  // basic string comparison of array contents to make sure local state is up to date
+  static getDerivedStateFromProps(newProps, state) {
+    if (
+      newProps.recipe.ingredients.toString() !== state.ingredients.toString()
+    ) {
+      return {
+        ingredients: newProps.recipe.ingredients
+      };
+    }
+
+    if (
+      newProps.recipe.instructions.toString() !== state.instructions.toString()
+    ) {
+      return {
+        instructions: newProps.recipe.instructions
+      };
+    }
+
+    return null;
+  }
+
   submitSuccess = () => {
     const { edit, updateRecipe, onClose, recipe } = this.props;
     const resetErrors = { errors: defaultErrors };
