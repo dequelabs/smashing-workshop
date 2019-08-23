@@ -19,6 +19,14 @@ const invalidRecipe = (input, inputs) => {
 
   return isEmpty || isDuplicate;
 };
+// basic string comparison of array contents to make sure local state is up to date
+const arrayStringIsEqual = (type, newProps, state) => {
+  let i = state[type].length;
+  while (i--) {
+    if (state[type][i] !== newProps.recipe[type][i]) return false;
+  }
+  return true;
+};
 const defaultErrors = {
   ingredients: [],
   instructions: [],
@@ -50,24 +58,17 @@ export default class RecipeModalContainer extends Component {
     };
   }
 
-  // basic string comparison of array contents to make sure local state is up to date
   static getDerivedStateFromProps(newProps, state) {
-    if (
-      newProps.recipe.ingredients.toString() !== state.ingredients.toString()
-    ) {
+    if (!arrayStringIsEqual('ingredients', newProps, state)) {
       return {
         ingredients: newProps.recipe.ingredients
       };
     }
-
-    if (
-      newProps.recipe.instructions.toString() !== state.instructions.toString()
-    ) {
+    if (!arrayStringIsEqual('instructions', newProps, state)) {
       return {
         instructions: newProps.recipe.instructions
       };
     }
-
     return null;
   }
 
