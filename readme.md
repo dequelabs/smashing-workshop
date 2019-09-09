@@ -23,34 +23,6 @@ Don't worry if you're lacking any of the above, we will walk you through every s
 $ git clone https://github.com/dequelabs/smashing-workshop.git
 ```
 
-There are two branches you can use: `modal-starter-react` and `modal-starter-vanilla`. If you are comfortable writing react or just want to learn basic react, checkout the `modal-starter-react` version. Otherwise, if you'd prefer to just write vanilla js/css/html (or want to set this up with your framework of choice), checkout `modal-starter-vanilla`
-
-### React
-
-```sh
-$ git fetch origin
-$ git checkout origin/modal-starter-react
-```
-
-### Vanilla
-
-```sh
-$ git fetch origin
-$ git checkout origin/modal-starter-vanilla
-```
-
-## [SmashingConf Toronto 2019](https://smashingconf.com/toronto-2019/workshops) Branches
-
-- [modal-starter-react](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-react)
-- [modal-starter-vanilla](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-vanilla)
-- [modal-starter-vanilla-solution](https://github.com/dequelabs/smashing-workshop/tree/modal-starter-vanilla-solution)(**incomplete example code**)
-
-## [SmashingConf San Francisco 2019](https://smashingconf.com/sf-2019/workshops/deque) Branches
-
-- [exercise-1](https://github.com/dequelabs/smashing-workshop/tree/exercise-1)
-- [exercise-2](https://github.com/dequelabs/smashing-workshop/tree/exercise-2)
-- [exercise-3](https://github.com/dequelabs/smashing-workshop/tree/exercise-3)
-
 ## Setup
 
 ### Install dependencies
@@ -79,4 +51,18 @@ with watcher:
 ```sh
 yarn test --watch
 # npm test -- --watch
+# This causes issues on some machines - see https://github.com/facebook/create-react-app/issues/4540#issuecomment-393268543 for potential easy fix
 ```
+
+## Milestone 1: Modal dialog focus management
+
+We have a basic modal built out but it is missing some signifcant functionality in terms of accessiblity.
+
+### Requirements:
+
+Trapping focus can be really easy. There is no need to handle keydowns on **every single focusable element** within the modal...Instead, we can simplify the approach by "focusing" (get it?) on the boundaries of the modal, or the first and last focusable elements.
+
+- [x] shift focus to the modal when it is launched
+- [ ] given a <kbd>tab</kbd> keydown on the last focusable item in the modal, the "OK" button, focus the first focusable item in the modal, the "X" (Close) button.
+- [ ] given a <kbd>shift+tab</kbd> keydown on the modal's heading OR the "X" (Close) button, focus the last focusable item in the modal, the "OK" button
+- [ ] close modal and return focus to button which launched it when <kbd>esc</kbd> is pressed

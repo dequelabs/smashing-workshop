@@ -65,3 +65,8 @@
 .App .dqpl-modal .dqpl-dialog-inner .dqpl-modal-header h2 {
   padding: 10px 24px;
 }
+
+.App__body {
+  text-align: center;
+  padding: 3em;
+}
