@@ -58,6 +58,8 @@ yarn test --watch
 
 We have a basic modal built out but it is missing some signifcant functionality in terms of accessiblity.
 
+**Open up `src/components/App/index.js` and `src/components/App/index.test.js`**
+
 ### Requirements:
 
 Trapping focus can be really easy. There is no need to handle keydowns on **every single focusable element** within the modal...Instead, we can simplify the approach by "focusing" (get it?) on the boundaries of the modal, or the first and last focusable elements.
