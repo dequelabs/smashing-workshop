@@ -1,4 +1,4 @@
-# Smashing 2019 Workshop
+# Smashing Conf Freiburg Germany 2019 Workshop
 
 > How To Translate Wireframes Into Accessible HTML/CSS
 
