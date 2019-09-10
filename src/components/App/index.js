@@ -6,7 +6,8 @@ import './index.css';
 
 export default class App extends Component {
   state = {
-    open: false
+    open: false,
+    error: null
   }
 
   setHeadingRef = el => this.modalHeading = el
@@ -32,8 +33,24 @@ export default class App extends Component {
    * NOTE: For the ease of testing this, let's utilize `e.key`, `e.target` and `e.shiftKey`
    */
   onKeyDown = e => {
-    const { modalHeading, okButton, closeButton } = this;
-    console.log('TODO: Handle keydowns! (trap focus etc...)')
+    const { key, target, shiftKey } = e
+    const { modalHeading, okButton, closeButton } = this
+    
+    switch (key) {
+      case 'Tab':
+        if (target === okButton && !shiftKey) {
+          e.preventDefault();
+          closeButton.focus()
+        } else if ((target === closeButton || target === modalHeading) && shiftKey) {
+          e.preventDefault();
+          okButton.focus()
+        }
+        break
+
+      case 'Escape':
+        this.onClose()
+        break
+    }
   }
 
   render() {
@@ -91,11 +108,14 @@ export default class App extends Component {
                 )}
                 show={this.state.open}
               >
-                <p>This is where our view/edit recipe content will go</p>
-                <div><Link href="#">dummy focusable #1</Link></div>
-                <div><Link href="#">dummy focusable #2</Link></div>
-                <div><Link href="#">dummy focusable #3</Link></div>
-                <p>Lorem ipsum and stuff</p>
+                <div className="dqpl-field-wrap">
+                  <label className="dqpl-label" htmlFor="instruction-1">Instruction #1</label>
+                  <input
+                    className="dqpl-text-input"
+                    type="text"
+                    id="instruction-1"
+                  />
+                </div>
               </Modal>
               <p>Lorem ipsum blah blah...<a href="#">pointless link</a></p>
             </div>
