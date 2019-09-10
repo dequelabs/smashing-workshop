@@ -58,3 +58,27 @@ test('escape key closes modal and returns focus to trigger', done => {
     done()
   })
 })
+
+describe('error validation', () => {
+  test('associates error message with input field via aria-describedby', () => {
+    const wrapper = mount(<App />)
+    openModal(wrapper)
+    wrapper.find('.ok-button').at(0).simulate('click')
+    expect(wrapper.instance().input.getAttribute('aria-describedby')).toBe('field-error')
+  })
+
+  test('focuses the input', () => {
+    const wrapper = mount(<App />)
+    openModal(wrapper)
+    wrapper.find('.ok-button').at(0).simulate('click')
+    expect(document.activeElement).toBe(wrapper.instance().input)
+  })
+
+  test('closes modal given an input value', () => {
+    const wrapper = mount(<App />)
+    openModal(wrapper)
+    wrapper.instance().input.value = 'Hello world'
+    wrapper.find('.ok-button').at(0).simulate('click')
+    expect(document.activeElement).toBe(wrapper.instance().trigger)
+  })
+})

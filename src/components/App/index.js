@@ -3,6 +3,7 @@ import { TopBar, Main, SkipLink, MenuItem, Layout, Button, Link } from 'cauldron
 import Modal from '../Modal'
 import logo from '../../img/icons/logo.svg';
 import './index.css';
+import classNames from 'classnames';
 
 export default class App extends Component {
   state = {
@@ -15,6 +16,7 @@ export default class App extends Component {
   setOkButtonRef = el => this.okButton = el
   setCloseButtonRef = el => this.closeButton = el
   setMainRef = el => this.main = el
+  setInputRef = el => this.input = el
   
   onOpen = () => {
     this.setState({ open: true }, () => {
@@ -53,7 +55,26 @@ export default class App extends Component {
     }
   }
 
+  /**
+   * Handle the form submission. Sets error state if input is blank
+   * 
+   * NOTE: The input we want to focus is `this.input`
+   */
+  onSubmit = e => {
+    e.preventDefault()
+    const hasError = !this.input.value
+    this.setState({
+      error: hasError ? 'Instruction must not be blank' : null
+    })
+
+    if (!hasError) {
+      return this.onClose()
+    }
+  }
+
   render() {
+    const { error } = this.state
+
     return (
       <div className="App">
         <SkipLink target={'#main-content'} />
@@ -100,7 +121,8 @@ export default class App extends Component {
                 )}
                 footer={(
                   <Button
-                    onClick={this.onClose}
+                    className="ok-button"
+                    onClick={this.onSubmit}
                     buttonRef={this.setOkButtonRef}
                   >
                     OK
@@ -108,14 +130,21 @@ export default class App extends Component {
                 )}
                 show={this.state.open}
               >
-                <div className="dqpl-field-wrap">
+                <form className="dqpl-field-wrap" onSubmit={this.onSubmit}>
                   <label className="dqpl-label" htmlFor="instruction-1">Instruction #1</label>
                   <input
-                    className="dqpl-text-input"
+                    className={classNames('dqpl-text-input', {
+                      'dqpl-error': error
+                    })}
                     type="text"
                     id="instruction-1"
+                    aria-invalid={!!error}
+                    ref={this.setInputRef}
                   />
-                </div>
+                  {error && (
+                    <div className="dqpl-error-wrap" id="field-error">{error}</div>
+                  )}
+                </form>
               </Modal>
               <p>Lorem ipsum blah blah...<a href="#">pointless link</a></p>
             </div>

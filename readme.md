@@ -54,17 +54,15 @@ yarn test --watch
 # This causes issues on some machines - see https://github.com/facebook/create-react-app/issues/4540#issuecomment-393268543 for potential easy fix
 ```
 
-## Milestone 1: Modal dialog focus management
+## Milestone 2: Error validation
 
-We have a basic modal built out but it is missing some signifcant functionality in terms of accessiblity.
+We have a basic modal built out with a single form field and some basic error validation to handle submitting modal form with empty input.
 
 **Open up `src/components/App/index.js` and `src/components/App/index.test.js`**
 
 ### Requirements:
 
-Trapping focus can be really easy. There is no need to handle keydowns on **every single focusable element** within the modal...Instead, we can simplify the approach by "focusing" (get it?) on the boundaries of the modal, or the first and last focusable elements.
-
-- [x] shift focus to the modal when it is launched
-- [ ] given a <kbd>tab</kbd> keydown on the last focusable item in the modal, the "OK" button, focus the first focusable item in the modal, the "X" (Close) button.
-- [ ] given a <kbd>shift+tab</kbd> keydown on the modal's heading OR the "X" (Close) button, focus the last focusable item in the modal, the "OK" button
-- [ ] close modal and return focus to button which launched it when <kbd>esc</kbd> is pressed
+- [x] close modal given a successful submission
+- [ ] associate the error message with the input via aria-describedby
+- [ ] shift focus to the input given an erroneous form submission
+- [x] close the modal given a successful form submission (an input with a value)
