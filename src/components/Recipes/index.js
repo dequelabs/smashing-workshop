@@ -31,7 +31,7 @@ const Recipes = ({
               >
                 <img src={pencil} className="edit" />
               </div>
-              <img src={recipe.image} alt="" role="presentation" />
+              <img src={recipe.image} />
             </div>
             <div className="Recipes__card-content">
               <div className="Heading">{recipe.name}</div>
