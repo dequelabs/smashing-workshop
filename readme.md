@@ -68,3 +68,9 @@ Trapping focus can be really easy. There is no need to handle keydowns on **ever
 - [ ] given a <kbd>tab</kbd> keydown on the last focusable item in the modal, the "OK" button, focus the first focusable item in the modal, the "X" (Close) button.
 - [ ] given a <kbd>shift+tab</kbd> keydown on the modal's heading OR the "X" (Close) button, focus the last focusable item in the modal, the "OK" button
 - [ ] close modal and return focus to button which launched it when <kbd>esc</kbd> is pressed
+
+Once you're done and all the tests pass, move on to the next milestone - error validation:
+
+```sh
+$ git checkout origin/milestone-II
+```
