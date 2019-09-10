@@ -1,6 +1,5 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import simulant from 'simulant'
 import App from './'
 
 const preventDefault = () => {}
