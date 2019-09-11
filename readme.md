@@ -64,6 +64,8 @@ We have a basic modal built out but it is missing some signifcant functionality 
 
 Trapping focus can be really easy. There is no need to handle keydowns on **every single focusable element** within the modal...Instead, we can simplify the approach by "focusing" (get it?) on the boundaries of the modal, or the first and last focusable elements.
 
+> See the [WAI-ARIA Authoring Practices Modal Dialog Section](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)
+
 - [x] shift focus to the modal when it is launched
 - [ ] given a <kbd>tab</kbd> keydown on the last focusable item in the modal, the "OK" button, focus the first focusable item in the modal, the "X" (Close) button.
 - [ ] given a <kbd>shift+tab</kbd> keydown on the modal's heading OR the "X" (Close) button, focus the last focusable item in the modal, the "OK" button
