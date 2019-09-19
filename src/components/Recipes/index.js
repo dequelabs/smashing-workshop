@@ -23,13 +23,12 @@ const Recipes = ({
           <div className="Recipes__card">
             <div className="Recipes__card-head">
               <div
-                aria-label={`Edit`}
                 onClick={() => {
                   updateModalState({ edit: recipe.name });
                 }}
                 tabIndex={-1}
               >
-                <img src={pencil} className="edit" />
+                <img src={pencil} className="edit" alt="Edit" />
               </div>
               <img src={recipe.image} />
             </div>
