@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Recipes from './';
 import data from '../../data';
+import { axe } from 'jest-axe';
 
 const defaultProps = {
   recipes: data,
@@ -13,6 +14,10 @@ const defaultProps = {
   }
 };
 const recipes = mount(<Recipes {...defaultProps} />);
+
+afterEach(async () => {
+  expect(await axe(recipes.html())).toHaveNoViolations();
+});
 
 test('recipe image is marked as decorative', () => {
   recipes.find('img').forEach(img => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Stats from './';
+import { axe } from 'jest-axe';
 
 const statsStub = [
   {
@@ -24,9 +25,14 @@ const statsStub = [
     histogram: []
   }
 ];
+let stats;
+
+afterEach(async () => {
+  expect(await axe(stats.html())).toHaveNoViolations();
+});
 
 test('marks each icon as decorative', () => {
-  const stats = shallow(<Stats stats={statsStub} />);
+  stats = shallow(<Stats stats={statsStub} />);
 
   stats.find('.Stat__value img').forEach(icon => {
     expect(icon.is('[role="presentation"]')).toBeTruthy();
@@ -35,7 +41,7 @@ test('marks each icon as decorative', () => {
 });
 
 test('wraps each stat in a live region', () => {
-  const stats = shallow(<Stats stats={statsStub} />);
+  stats = shallow(<Stats stats={statsStub} />);
 
   expect(stats.find('[aria-live][aria-relevant][aria-atomic]').length).toBe(
     statsStub.length
@@ -43,7 +49,7 @@ test('wraps each stat in a live region', () => {
 });
 
 test('wraps each stat in a heading level 2', () => {
-  const stats = shallow(<Stats stats={statsStub} />);
+  stats = shallow(<Stats stats={statsStub} />);
   const h2s = stats.find('h2');
   h2s.forEach((h2, i) => {
     const text = h2.text();

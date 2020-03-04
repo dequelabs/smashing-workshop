@@ -24,6 +24,7 @@
       "globals": {
         "jest": true,
         "test": true,
+        "describe": true,
         "expect": true,
         "afterEach": true,
         "afterAll": true,
