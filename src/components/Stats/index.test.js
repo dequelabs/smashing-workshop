@@ -41,3 +41,13 @@ test('wraps each stat in a live region', () => {
     statsStub.length
   );
 });
+
+test('wraps each stat in a heading level 2', () => {
+  const stats = shallow(<Stats stats={statsStub} />);
+  const h2s = stats.find('h2');
+  h2s.forEach((h2, i) => {
+    const text = h2.text();
+    expect(text.includes(statsStub[i].value)).toBe(true);
+    expect(text.includes(statsStub[i].label)).toBe(true);
+  });
+});

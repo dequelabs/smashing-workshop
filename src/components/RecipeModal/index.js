@@ -73,7 +73,7 @@ export default class RecipeModal extends Component {
           <ModalContent>
             <h3 id="ingredients-heading">Ingredients</h3>
             <div
-              className="RecipeModal__group"
+              className="RecipeModal__group Ingredients"
               tabIndex={-1}
               ref={el => {
                 setWrapperRef('ingredientsWrapper', el);
@@ -95,7 +95,7 @@ export default class RecipeModal extends Component {
             )}
             <h3 id="instructions-heading">Instructions</h3>
             <div
-              className="RecipeModal__group"
+              className="RecipeModal__group Instructions"
               tabIndex={-1}
               ref={el => {
                 setWrapperRef('instructionsWrapper', el);
@@ -108,7 +108,7 @@ export default class RecipeModal extends Component {
               <div className="RecipeModal__add-another">
                 <button
                   type="button"
-                  className="dqpl-link"
+                  className="dqpl-link RecipeModal__add-instruction"
                   onClick={this.addInstruction}
                 >
                   + Add another instruction
