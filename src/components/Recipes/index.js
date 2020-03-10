@@ -16,6 +16,7 @@ const Recipes = ({
 }) => {
   const modalIsShowing = edit || view;
   const buttonTabIndex = modalIsShowing ? -1 : 0;
+  /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
   return (
     <div className="Recipes">
       {recipes.map((recipe, index) => (
@@ -26,7 +27,7 @@ const Recipes = ({
                 onClick={() => {
                   updateModalState({ edit: recipe.name });
                 }}
-                tabIndex={-1}
+                tabIndex={0}
               >
                 <img src={pencil} className="edit" alt="Edit" />
               </div>
@@ -75,6 +76,7 @@ const Recipes = ({
       ))}
     </div>
   );
+  /* eslint-enable jsx-a11y/no-noninteractive-tabindex */
 };
 /* eslint-enable jsx-a11y/click-events-have-key-events */
 /* eslint-enable jsx-a11y/no-static-element-interactions */
