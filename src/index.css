@@ -40,3 +40,8 @@ body .dqpl-layout,
 body .dqpl-layout .dqpl-main-content {
   padding: 0;
 }
+
+pre {
+  text-align: left;
+  overflow: auto;
+}

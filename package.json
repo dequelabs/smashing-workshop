@@ -29,20 +29,6 @@
       "git add"
     ]
   },
-  "postcss": {
-    "modules": false,
-    "plugins": {
-      "autoprefixer": {
-        "browsers": [
-          ">1%",
-          "last 4 versions",
-          "Firefox ESR",
-          "not ie < 9"
-        ],
-        "flexbox": "no-2009"
-      }
-    }
-  },
   "staticFiles": {
     "staticPath": "src/img"
   },
@@ -58,15 +44,15 @@
     }
   },
   "dependencies": {
-    "cauldron-react": "^0.5.1",
+    "@deque/cauldron-react": "^0.0.0",
+    "@deque/cauldron-styles": "^0.0.0",
+    "cauldron-react": "^5.0.0",
     "classnames": "^2.2.6",
-    "deque-pattern-library": "^4.2.1",
-    "react": "^16.8.6",
+    "react": "^16.6.0",
     "react-dom": "^16.8.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
