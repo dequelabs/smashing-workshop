@@ -146,8 +146,7 @@
 }
 
 .Recipes__card td.Beginner {
-  /* intentional contrast issue (should be #00853e) */
-  color: #00853e;
+  color: #76bf98;
 }
 
 .Recipes__card td.Intermediate {
