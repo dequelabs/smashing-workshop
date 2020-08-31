@@ -125,27 +125,35 @@
   transition: all 500ms;
 }
 
-.Recipes__card dt {
+.Recipes__card table {
+  margin: 15px 0;
+  width: 100%;
+}
+
+.Recipes__card th {
   color: #666;
   font-size: 18px;
   font-weight: normal;
+  text-align: left;
+  padding: 5px 0;
 }
 
-.Recipes__card dd {
+.Recipes__card td {
   color: #333;
   font-size: 18px;
   font-weight: 500;
+  text-align: right;
 }
 
-.Recipes__card dd.Beginner {
+.Recipes__card td.Beginner {
   /* intentional contrast issue (should be #00853e) */
-  color: #76bf98;
+  color: #00853e;
 }
 
-.Recipes__card dd.Intermediate {
+.Recipes__card td.Intermediate {
   color: #6f4d0c;
 }
 
-.Recipes__card dd.Advanced {
+.Recipes__card td.Advanced {
   color: #d83251;
 }

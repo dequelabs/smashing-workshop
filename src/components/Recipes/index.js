@@ -31,18 +31,26 @@ const Recipes = ({
               >
                 <img src={pencil} className="edit" alt="Edit" />
               </div>
-              <img src={recipe.image} />
+              <img src={recipe.image} className="Recipe__image" />
             </div>
             <div className="Recipes__card-content">
               <div className="Heading">{recipe.name}</div>
-              <dl>
-                <dt>Prep time</dt>
-                <dd>{recipe.prepTime}</dd>
-                <dt>Cook time</dt>
-                <dd>{recipe.cookTime}</dd>
-                <dt>Difficulty</dt>
-                <dd className={recipe.difficulty}>{recipe.difficulty}</dd>
-              </dl>
+              <table>
+                <tbody>
+                  <tr>
+                    <th scope="row">Prep time</th>
+                    <td>{recipe.prepTime}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cook time</th>
+                    <td>{recipe.cookTime}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Difficulty</th>
+                    <td className={recipe.difficulty}>{recipe.difficulty}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div className="Recipes__card-foot">
               <Button
