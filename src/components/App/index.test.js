@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { axe } from 'jest-axe';
 import App from './';
 
 const preventDefault = () => {};
@@ -23,6 +24,11 @@ const fireKeydown = (wrapper, target, e) => {
   });
 };
 
+let wrapper;
+afterEach(async () => {
+  expect(await axe(wrapper.html())).toHaveNoViolations();
+});
+
 test('mounts', () => {
-  mount(<App />);
+  wrapper = mount(<App />);
 });
