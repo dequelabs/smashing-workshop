@@ -23,11 +23,11 @@ import 'cypress-axe';
 const { axe } = JSON.parse(Cypress.env('CONFIG'));
 
 before(() => {
-  cy.visit('http://localhost:1234');
+  cy.visit('http://localhost:1235');
   // https://github.com/avanslaars/cypress-axe#output
   cy.injectAxe();
 });
 
 afterEach(() => {
-  cy.checkA11y(axe);
+  cy.checkA11y(null, axe);
 });
