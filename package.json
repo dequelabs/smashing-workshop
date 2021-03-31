@@ -7,9 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "parcel build src/index.html",
-    "start": "parcel src/index.html --port 1234",
+    "start": "parcel src/index.html --port 1235",
     "cy:open": "cypress open",
-    "cy:wait": "wait-on http://localhost:1234",
+    "cy:wait": "wait-on http://localhost:1235",
     "test:e2e:serve": "npm start",
     "test:e2e:cy": "run-s cy:wait cy:open",
     "test:e2e": "run-p test:e2e:*",
@@ -45,7 +45,11 @@
       "<rootDir>test-utils/setupTests.js"
     ],
     "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>test-utils/fileMock.js",
       "\\.(css|less)$": "<rootDir>test-utils/styleMock.js"
+    },
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
     }
   },
   "dependencies": {
@@ -57,14 +61,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
     "ally.js": "^1.4.1",
     "autoprefixer": "^9.5.1",
     "axe-core": "^3.2.2",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^26.6.3",
     "cypress": "^3.2.0",
     "cypress-axe": "^0.4.0",
     "enzyme": "^3.9.0",
@@ -81,6 +87,7 @@
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-static-files-copy": "^2.0.0",
     "prettier": "^1.16.4",
+    "sinon": "^10.0.0",
     "wait-on": "^3.2.0"
   }
 }

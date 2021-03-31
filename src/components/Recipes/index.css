@@ -156,3 +156,7 @@
 .Recipes__card td.Advanced {
   color: #d83251;
 }
+
+.Recipes__card-edit:focus {
+  outline: 0;
+}

@@ -24,6 +24,7 @@ const Recipes = ({
           <div className="Recipes__card">
             <div className="Recipes__card-head">
               <div
+                className="Recipes__card-edit"
                 onClick={() => {
                   updateModalState({ edit: recipe.name });
                 }}
@@ -54,6 +55,7 @@ const Recipes = ({
             </div>
             <div className="Recipes__card-foot">
               <Button
+                className="Recipes__card-cook"
                 onClick={() => updateModalState({ view: recipe.name })}
                 tabIndex={buttonTabIndex}
               >

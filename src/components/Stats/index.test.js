@@ -29,7 +29,6 @@ test('marks each icon as decorative', () => {
   const stats = shallow(<Stats stats={statsStub} />);
 
   stats.find('.Stat__value img').forEach(icon => {
-    expect(icon.is('[role="presentation"]')).toBeTruthy();
     expect(icon.is('[alt=""]')).toBeTruthy();
   });
 });
