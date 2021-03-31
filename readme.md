@@ -46,6 +46,20 @@ yarn test --watch
 # npm test -- --watch
 ```
 
+### Run tests on Saucelabs
+
+After you have installed dependencies and run the tests locally...
+
+```sh
+brew install saucectl
+```
+
+Follow the setup instructions for Saucelabs saucectl https://github.com/saucelabs/saucectl#the-configure-command
+
+```sh
+saucectl run --env TEST_URL=https://deque-workshop.netlify.app/
+```
+
 ## Exercise 1: <Stats /> (`src/components/Stats`)
 
 ```sh

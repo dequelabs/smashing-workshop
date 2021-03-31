@@ -48,7 +48,8 @@ Cypress.Commands.add(
 );
 
 // @see https://github.com/cypress-io/cypress/issues/299
-import tabSequence from 'ally.js/query/tabsequence';
+const ally = require('ally.js');
+const tabSequence = ally.query.tabsequence;
 const tab = (el, shiftKey) => {
   const win = el.ownerDocument.defaultView;
   const keyboardEvent = new win.KeyboardEvent('keydown', {

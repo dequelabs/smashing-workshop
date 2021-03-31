@@ -78,7 +78,7 @@
     "autoprefixer": "^9.5.1",
     "axe-core": "^4.1.2",
     "babel-eslint": "^10.0.1",
-    "cypress": "^3.8.3",
+    "cypress": "^5.6.0",
     "cypress-axe": "^0.12.2",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
