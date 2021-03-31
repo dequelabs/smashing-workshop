@@ -17,6 +17,11 @@ module.exports = (on, config) => {
       runOnly: {
         type: 'tag',
         values: ['wcag2a', 'wcag2aa']
+      },
+      rules: {
+        'color-contrast': {
+          enabled: false
+        }
       }
     },
     selectors: {

@@ -21,13 +21,12 @@ import 'cypress-axe';
 // require('./commands')
 
 const { axe } = JSON.parse(Cypress.env('CONFIG'));
-
+const URL = Cypress.env('TEST_URL') || 'http://localhost:1235';
 before(() => {
-  cy.visit('http://localhost:1234');
-  // https://github.com/avanslaars/cypress-axe#output
+  cy.visit(URL);
   cy.injectAxe();
 });
 
 afterEach(() => {
-  cy.checkA11y(axe);
+  cy.checkA11y(null, axe);
 });
