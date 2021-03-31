@@ -25,12 +25,10 @@ const statsStub = [
   }
 ];
 
-test('marks each icon as decorative', () => {
+test('renders the stat icon images', () => {
   const stats = shallow(<Stats stats={statsStub} />);
 
-  stats.find('.Stat__value img').forEach(icon => {
-    expect(icon.is('[alt=""]')).toBeTruthy();
-  });
+  expect(stats.find('.Stat__value img').length).toBe(3);
 });
 
 test('wraps each stat in a live region', () => {
