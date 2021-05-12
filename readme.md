@@ -1,20 +1,4 @@
-# Smashing 2019 Workshop
-
-## NOTE: This is the broken branch. It intentionally has a11y issues:
-
-<details>
-  <summary>view intentional accessibility issues</summary>
-
-- generic title (page info tool)
-- stats icons have generic/non-descriptive accNames of "decorative icon" (images tool)
-- trash buttons have bad accNames of "trash can icon" (n/r/v tool)
-- all the edit buttons are divs instead of buttons (n/r/v tool)
-- edit modal form fields have non-unique labels (forms tool)
-- yumminess field has no label (forms tool)
-- yumminess field's error is non-descriptive (forms tool)
-- recipe card images are not marked as decorative properly (`alt=""`)
-
-</details>
+# Deque Workshop
 
 ## Prerequisites
 
@@ -36,7 +20,11 @@ yarn
 
 ## Workshop!
 
+**NOTE**: this particular app is built with react, an understanding of react will be helpful but is not required. We will walk you through everything!
+
 Go ahead and run your local dev server (`yarn start`). Feel free to play around with the app and get familiar with it.
+
+### [install "axe Accessibility Linter" if using VSCode!](https://marketplace.visualstudio.com/items?itemName=deque-systems.vscode-axe-linter)
 
 ### Component structure
 
@@ -48,11 +36,15 @@ Go ahead and run your local dev server (`yarn start`). Feel free to play around 
 
 ### Unit tests
 
+_review existing unit tests / assertions_
+
 ```sh
-yarn test --watch
+yarn test --watch # you may have to type "a" into the console to get *all* tests to run!
 ```
 
 Fix the failing tests!
+
+Test the live region out with a screen reader!
 
 ### axe DevTools
 
@@ -65,12 +57,13 @@ Let's run axe on our app now that we've got passing unit tests.
 1. navigate browser to `http://localhost:1235`
 1. open up axe devtools
 1. scan the page
+1. save results!
 
-- \_if you happened to have opened up the devtools console earlier, you probably saw a few of these violations printed out in the console via [`@axe-core/react`](https://www.npmjs.com/package/@axe-core/react)
+- _if you happened to have opened up the devtools console earlier, you probably saw a few of these violations printed out in the console via [`@axe-core/react`](https://www.npmjs.com/package/@axe-core/react)_
 
-1. fix all of the issues
+1. review serious and critical issues
+1. fix all of those issues
 1. run the scan again until you have 0 violations (you can ignore the needs review color contrast issues -- no real issues there)
-1. click on save results
 
 #### Enter IGT
 
@@ -92,6 +85,7 @@ Run the keyboard IGT and observe what it finds.
 - fix the focus indication issues
     <details><summary>hint</summary> see `components/Recipes/index.css` (`.Recipes__card-edit:focus` style declaration)</details>
 - fix the fact that the recipe card's edit button is not marked up as a real button :facepalm:
+  - write a new unit test for this!
 - run the keyboard IGT again to verify that the issues have been resolved! (#axeCleanKeyboardIGT)
 
 ##### Images IGT
@@ -100,7 +94,9 @@ Run the images IGT and observe what it finds.
 
 - fix the stats images by marking them up as presentational
     <details><summary>hint</summary> adding `alt=""` is sufficient (but you _can_ go above and beyond and also set `role=presentation`)</details>
+    - write a unit test for this!
 - make the pencil icons "Edit" image's alt text descriptive / unique by following the wireframe's requirement and appending the recipe name to the alt text
+  - write a unit test for this!
 
 ##### Forms IGT
 
@@ -109,6 +105,7 @@ Click on "COOK CHOCOLATE CAKE" button to launch the modal. In devtools, click "S
 - fix the `aria-required` issue
   - bonus: add some visual indication that the field is required!
 - make the error messages more descriptive
+  - write a unit test for this!
 - run the IGT again to verify that no remaining Forms issues exist (#axeCleanFormsIGT)
 
 ##### Keep it going
@@ -117,7 +114,7 @@ If you have time, run through the other IGTs and see if you can find any other i
 
 #### Sustainability
 
-Now that we've seen where our accessibility issues crept it, let's write some unit tests to prevent them from ever creeping back in.
+We wrote unit tests as we found issues...This prevents us from making the same mistake in the future and ensures these issues do not creep back into the source code.
 
 <details>
   <summary>Example: test that the stats images are all properly marked as decorative/presentational</summary>
@@ -134,3 +131,9 @@ test('marks each icon as decorative', () => {
 ```
 
 </details>
+
+## Try these techniques on your own content!
+
+- get axe running in your unit tests
+- write a11y-specific unit tests
+- run IGTs on your page(s)
