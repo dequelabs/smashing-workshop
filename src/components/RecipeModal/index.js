@@ -79,6 +79,7 @@ export default class RecipeModal extends Component {
                 setWrapperRef('ingredientsWrapper', el);
               }}
               aria-labelledby="ingredients-heading"
+              data-testid="ingredients"
             >
               {edit ? ingredientItems : <ul>{ingredientItems}</ul>}
             </div>
@@ -88,6 +89,7 @@ export default class RecipeModal extends Component {
                   type="button"
                   className="dqpl-link"
                   onClick={this.addIngredient}
+                  data-testid="add-ingredient"
                 >
                   + Add another ingredient
                 </button>
@@ -101,6 +103,7 @@ export default class RecipeModal extends Component {
                 setWrapperRef('instructionsWrapper', el);
               }}
               aria-labelledby="instructions-heading"
+              data-testid="instructions"
             >
               {edit ? instructionItems : <ol>{instructionItems}</ol>}
             </div>
@@ -110,6 +113,7 @@ export default class RecipeModal extends Component {
                   type="button"
                   className="dqpl-link"
                   onClick={this.addInstruction}
+                  data-testid="add-instruction"
                 >
                   + Add another instruction
                 </button>
