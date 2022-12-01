@@ -21,7 +21,13 @@ const Recipes = ({
     <div className="Recipes">
       {recipes.map((recipe, index) => (
         <Fragment key={recipe.name}>
-          <div className="Recipes__card">
+          <div
+            className="Recipes__card"
+            data-testid={recipe.name
+              .toLowerCase()
+              .replace(/\s+/, '-')
+              .replace(/'/, '')}
+          >
             <div className="Recipes__card-head">
               <div
                 onClick={() => {
@@ -29,7 +35,12 @@ const Recipes = ({
                 }}
                 tabIndex={0}
               >
-                <img src={pencil} className="edit" alt="Edit" />
+                <img
+                  src={pencil}
+                  className="edit"
+                  alt="Edit"
+                  data-testid="edit-button"
+                />
               </div>
               <img src={recipe.image} className="Recipe__image" />
             </div>
@@ -56,6 +67,7 @@ const Recipes = ({
               <Button
                 onClick={() => updateModalState({ view: recipe.name })}
                 tabIndex={buttonTabIndex}
+                data-testid="view-button"
               >
                 <span className="BracketLeft" aria-hidden="true">
                   [
